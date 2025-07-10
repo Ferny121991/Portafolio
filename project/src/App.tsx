@@ -1,5 +1,5 @@
 import React, { useState, FormEvent, useEffect } from 'react';
-import { Github, Mail, Menu, X, Code2, FileJson, Blocks } from 'lucide-react';
+import { Github, Mail, Menu, X, Code2, FileJson, Image, Atom, Palette, Brain } from 'lucide-react';
 import ParticlesBackground from './components/ParticlesBackground';
 import ScrollReveal from './components/ScrollReveal';
 
@@ -47,8 +47,10 @@ function App() {
   const skills = [
     { name: 'HTML', icon: Code2, color: 'text-orange-500' },
     { name: 'JavaScript', icon: FileJson, color: 'text-yellow-500' },
-    { name: 'CSS', icon: Blocks, color: 'text-blue-600' },
-    { name: 'React', icon: Code2, color: 'text-blue-400' },
+    { name: 'CSS', icon: Palette, color: 'text-blue-600' },
+    { name: 'React', icon: Atom, color: 'text-blue-400' },
+    { name: 'Logo Creation', icon: Image, color: 'text-purple-500' },
+    { name: 'Prompt Engineer / AI Creator', icon: Brain, color: 'text-green-500' },
     { name: 'Git', icon: Github, color: 'text-gray-700' },
   ];
 
@@ -383,7 +385,6 @@ function App() {
                 <a href="https://github.com/Ferny121991" className="text-gray-600 hover:text-blue-600 transition-colors transform hover:scale-125 transition-transform duration-300">
                   <Github size={24} />
                 </a>
-          
                 <a href="/resume.html" className="text-gray-600 hover:text-blue-600 transition-colors transform hover:scale-125 transition-transform duration-300">
                   <FileJson size={24} />
                 </a>
@@ -391,6 +392,15 @@ function App() {
                   <Mail size={24} />
                 </a>
               </div>
+              <a 
+                href="https://precios-prices.fernelydev.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-8 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse hover:animate-none text-center"
+              >
+                <span className="text-xl">✨ View My Prices</span>
+                <div className="text-sm opacity-80 mt-1">Check out my affordable packages</div>
+              </a>
             </ScrollReveal>
           </div>
         </div>
