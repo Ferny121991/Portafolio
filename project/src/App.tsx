@@ -70,6 +70,30 @@ function App() {
       image: '/img/financial.png',
       link: 'https://analis-gastos.netlify.app/',
     },
+    {
+      title: 'Jardinería Green Gardens',
+      description: 'A modern website for a gardening business, showcasing services and portfolio with a clean, nature-inspired design',
+      image: '/img/gardening-placeholder.jpg',
+      link: 'https://greengardensjn.netlify.app/',
+    },
+    {
+      title: 'Blog de Café',
+      description: 'A coffee blog featuring articles, brewing guides, and coffee shop reviews with a warm, inviting design',
+      image: '/img/coffee-placeholder.jpg',
+      link: 'https://blogcafefer.netlify.app/',
+    },
+    {
+      title: 'Spa & Masajes Ferny',
+      description: 'A relaxing spa website offering massage services, treatments, and online booking functionality',
+      image: '/img/spa.png',
+      link: 'https://spaferny.netlify.app/',
+    },
+    {
+      title: 'Iglesia de Oasis',
+      description: 'A spiritual community website featuring sermons, events, and resources for the congregation',
+      image: '/img/church-placeholder.jpg',
+      link: 'https://iglesiadeoasis.com/',
+    },
   ];
 
   return (
