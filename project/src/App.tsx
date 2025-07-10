@@ -48,6 +48,7 @@ function App() {
     { name: 'HTML', icon: Code2, color: 'text-orange-500' },
     { name: 'JavaScript', icon: FileJson, color: 'text-yellow-500' },
     { name: 'CSS', icon: Blocks, color: 'text-blue-600' },
+    { name: 'React', icon: Code2, color: 'text-blue-400' },
     { name: 'Git', icon: Github, color: 'text-gray-700' },
   ];
 
@@ -73,13 +74,13 @@ function App() {
     {
       title: 'Jardinería Green Gardens',
       description: 'A modern website for a gardening business, showcasing services and portfolio with a clean, nature-inspired design',
-      image: '/img/gardening-placeholder.jpg',
+      image: '/img/garden.png',
       link: 'https://greengardensjn.netlify.app/',
     },
     {
       title: 'Blog de Café',
       description: 'A coffee blog featuring articles, brewing guides, and coffee shop reviews with a warm, inviting design',
-      image: '/img/coffee-placeholder.jpg',
+      image: '/img/cafe.png',
       link: 'https://blogcafefer.netlify.app/',
     },
     {
@@ -91,7 +92,7 @@ function App() {
     {
       title: 'Iglesia de Oasis',
       description: 'A spiritual community website featuring sermons, events, and resources for the congregation',
-      image: '/img/church-placeholder.jpg',
+      image: '/img/iglesia.png',
       link: 'https://iglesiadeoasis.com/',
     },
   ];
