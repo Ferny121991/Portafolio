@@ -1,4 +1,5 @@
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getImageUrl } from './utils/imageUtils';
 import { Github, Mail, Menu, X, Code2, FileJson, Image, Atom, Palette, Brain } from 'lucide-react';
 import ParticlesBackground from './components/ParticlesBackground';
 import ScrollReveal from './components/ScrollReveal';
@@ -7,17 +8,7 @@ import TextGenerateEffectDemo from './components/text-generate-effect-demo';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [formStatus, setFormStatus] = useState({
-    submitting: false,
-    success: false,
-    error: false,
-    message: ''
-  });
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -174,7 +165,7 @@ function App() {
             Fernely Dev
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 animate-slide-up">
-            Full Stack Developer & UI/UX Enthusiast
+            Web Developer & UI/UX Enthusiast
           </p>
           <button
             onClick={() => scrollToSection('contact')}
@@ -202,7 +193,7 @@ function App() {
               className="transform transition-all duration-700 hover:rotate-2 hover:scale-105 hover:shadow-xl -mt-4 -mb-2"
             >
               <img
-                src="/img/profile.jpg"
+                src={getImageUrl("/img/profile.jpg")}
                 alt="Fernely Developer"
                 className="rounded-lg shadow-lg w-full h-auto object-cover max-w-[90%] mx-auto"
                 style={{ maxHeight: '500px' }}
@@ -297,108 +288,61 @@ function App() {
       <section id="contact" className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
-            <h2 className="text-3xl font-bold text-center mb-12">Get in Touch</h2>
+            <h2 className="text-3xl font-bold text-center mb-6">Let's Connect</h2>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              Feel free to reach out to me for any questions or opportunities. I'll get back to you as soon as possible.
+            </p>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 gap-8">
-            <ScrollReveal delay={0.3} rootMargin="0px 0px -50px 0px">
-              {formStatus.success ? (
-                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-                  <strong className="font-bold">Success! </strong>
-                  <span className="block sm:inline">Your message has been sent. I'll get back to you soon!</span>
-                </div>
-              ) : (
-                <form 
-                  className="space-y-4" 
-                  onSubmit={(e: FormEvent) => {
-                    e.preventDefault();
-                    setFormStatus({
-                      submitting: true,
-                      success: false,
-                      error: false,
-                      message: ''
-                    });
-                    
-                    // In a real app, you would send the form data to your backend
-                    setTimeout(() => {
-                      setFormStatus({
-                        submitting: false,
-                        success: true,
-                        error: false,
-                        message: 'Message sent successfully'
-                      });
-                      setFormData({ name: '', email: '', message: '' });
-                    }, 1500);
-                  }}
-                >
-                  <div>
-                    <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                    />
+          
+          <div className="flex flex-col items-center space-y-12">
+            <ScrollReveal delay={0.3} rootMargin="0px 0px -50px 0px" className="w-full max-w-md">
+              <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                <div className="text-center">
+                  <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Mail size={32} className="text-blue-600" />
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-gray-700 mb-2">Email</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-gray-700 mb-2">Message</label>
-                    <textarea 
-                      id="message" 
-                      rows={5}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                    ></textarea>
-                  </div>
-                  <button 
-                    type="submit" 
-                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg transform transition-all duration-300 hover:bg-blue-700 hover:scale-105 hover:shadow-md"
-                    disabled={formStatus.submitting}
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2">Email Me</h3>
+                  <a 
+                    href="mailto:fernelydev@gmail.com" 
+                    className="text-xl md:text-2xl font-medium text-blue-600 hover:text-blue-700 transition-colors duration-300 break-all"
                   >
-                    {formStatus.submitting ? 'Sending...' : 'Send Message'}
-                  </button>
-                </form>
-              )}
-            </ScrollReveal>
-            <ScrollReveal 
-              delay={0.5} 
-              rootMargin="0px 0px -50px 0px" 
-              className="flex flex-col justify-center items-center space-y-6"
-            >
-              <div className="flex space-x-6">
-                <a href="https://github.com/Ferny121991" className="text-gray-600 hover:text-blue-600 transition-colors transform hover:scale-125 transition-transform duration-300">
-                  <Github size={24} />
-                </a>
-                <a href="/resume.html" className="text-gray-600 hover:text-blue-600 transition-colors transform hover:scale-125 transition-transform duration-300">
-                  <FileJson size={24} />
-                </a>
-                <a href="mailto:sosa121991@gmail.com" className="text-gray-600 hover:text-blue-600 transition-colors transform hover:scale-125 transition-transform duration-300">
-                  <Mail size={24} />
-                </a>
+                    fernelydev@gmail.com
+                  </a>
+                  <p className="mt-4 text-gray-500">
+                    I typically respond within 24 hours
+                  </p>
+                </div>
               </div>
-              <a 
-                href="https://precios-prices.fernelydev.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="mt-8 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse hover:animate-none text-center"
-              >
-                <span className="text-xl">✨ View My Prices</span>
-                <div className="text-sm opacity-80 mt-1">Check out my affordable packages</div>
-              </a>
             </ScrollReveal>
+
+            <div className="w-full max-w-md">
+              <ScrollReveal 
+                delay={0.5} 
+                rootMargin="0px 0px -50px 0px" 
+                className="flex flex-col items-center space-y-6"
+              >
+                <div className="flex space-x-6">
+                  <a href="https://github.com/Ferny121991" className="text-gray-600 hover:text-blue-600 transition-colors transform hover:scale-125 transition-transform duration-300">
+                    <Github size={24} />
+                  </a>
+                  <a href="/resume.html" className="text-gray-600 hover:text-blue-600 transition-colors transform hover:scale-125 transition-transform duration-300">
+                    <FileJson size={24} />
+                  </a>
+                  <a href="mailto:fernelydev@gmail.com" className="text-gray-600 hover:text-blue-600 transition-colors transform hover:scale-125 transition-transform duration-300">
+                    <Mail size={24} />
+                  </a>
+                </div>
+                <a 
+                  href="https://precios.fernelydev.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-4 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse hover:animate-none text-center w-full max-w-xs"
+                >
+                  <span className="text-xl">✨ View My Prices</span>
+                  <div className="text-sm opacity-80 mt-1">Check out my affordable packages</div>
+                </a>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
