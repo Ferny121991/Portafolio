@@ -2,6 +2,7 @@ import React, { useState, FormEvent, useEffect } from 'react';
 import { Github, Mail, Menu, X, Code2, FileJson, Image, Atom, Palette, Brain } from 'lucide-react';
 import ParticlesBackground from './components/ParticlesBackground';
 import ScrollReveal from './components/ScrollReveal';
+import TextGenerateEffectDemo from './components/text-generate-effect-demo';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -211,12 +212,7 @@ function App() {
               delay={0.5} 
               rootMargin="0px 0px -100px 0px"
             >
-              <p className="text-gray-600 leading-relaxed">
-                I'm a passionate Full Stack Developer with expertise in modern web technologies.
-                With a keen eye for design and a love for clean code, I create engaging digital
-                experiences that solve real-world problems. My approach combines technical
-                excellence with creative problem-solving to deliver outstanding results.
-              </p>
+              <TextGenerateEffectDemo />
             </ScrollReveal>
           </div>
         </div>
