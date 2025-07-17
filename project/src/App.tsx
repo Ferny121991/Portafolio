@@ -198,13 +198,14 @@ function App() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <ScrollReveal 
               delay={0.3} 
-              rootMargin="0px 0px -100px 0px"
-              className="transform transition-all duration-700 hover:rotate-2 hover:scale-105 hover:shadow-xl"
+              rootMargin="0px 0px -50px 0px"
+              className="transform transition-all duration-700 hover:rotate-2 hover:scale-105 hover:shadow-xl -mt-4 -mb-2"
             >
               <img
                 src="/img/profile.jpg"
                 alt="Fernely Developer"
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
+                className="rounded-lg shadow-lg w-full h-auto object-cover max-w-[90%] mx-auto"
+                style={{ maxHeight: '500px' }}
               />
             </ScrollReveal>
             
