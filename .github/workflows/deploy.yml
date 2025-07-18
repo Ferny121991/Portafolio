@@ -30,6 +30,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: deploy
-         allow_empty_commit: true
+          allow_empty_commit: true
 
 
