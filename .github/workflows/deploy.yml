@@ -24,12 +24,15 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy dist to deploy branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: deploy
-          allow_empty_commit: true
+    - name: Deploy dist to deploy branch
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    personal_token: ${{ secrets.GH_PAT }}   # usamos tu secreto
+    publish_dir: ./dist
+    publish_branch: deploy
+    allow_empty_commit: true
+    user_name: FernyDev
+    user_email: fernydev@example.com
+
 
 
