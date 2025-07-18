@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículum - Fernely U Núñez Sosa</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #1a56db;
+            --secondary-color: #2563eb;
+            --accent-color: #f43f5e;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --background-light: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            background-color: #edf2f7;
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        header {
+            position: relative;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--white);
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-photo svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .profile-name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .profile-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .profile-contact {
+            margin-top: 15px;
+        }
+        
+        .profile-contact a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .profile-contact a:hover {
+            opacity: 0.8;
+        }
+        
+        .download-btn {
+            margin-top: 20px;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-download:hover {
+            background-color: #e11d48;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-download i {
+            margin-right: 8px;
+        }
+        
+        .content-wrapper {
+            padding: 40px;
+        }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+        
+        .sidebar, .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        section {
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .objective-text {
+            font-style: italic;
+            color: var(--text-light);
+            line-height: 1.8;
+            padding: 20px;
+            background-color: var(--background-light);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background-color: var(--background-light);
+            transform: translateX(5px);
+        }
+        
+        .contact-item i {
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+        
+        .contact-item a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .skill-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 15px 10px;
+            background-color: var(--background-light);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            background-color: var(--white);
+        }
+        
+        .skill-icon i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .skill-icon span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .languages {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .language-item {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 15px;
+            background-color: var(--background-light);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .language-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .language-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+        
+        .language-level {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .about-me {
+            background-color: var(--background-light);
+            padding: 25px;
+            border-radius: 10px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .experience-item, .education-item, .project-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover, .education-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experience-item::before, .education-item::before, .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .item-header {
+            margin-bottom: 15px;
+        }
+        
+        .item-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .item-company {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .item-company i {
+            font-size: 0.9rem;
+        }
+        
+        .item-date {
+            display: inline-block;
+            color: var(--text-light);
+            background-color: var(--background-light);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        
+        .item-description {
+            color: var(--text-light);
+            margin-top: 15px;
+            line-height: 1.7;
+        }
+        
+        .item-duties {
+            margin-top: 15px;
+            list-style-position: outside;
+        }
+        
+        .item-duties li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        .item-duties li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #e2e8f0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            background-color: var(--background-light);
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media print {
+            .btn-download {
+                display: none;
+            }
+            
+            body {
+                background-color: white;
+                color: black;
+            }
+            
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            header {
+                padding: 20px 0;
+            }
+            
+            .content-wrapper {
+                padding: 20px;
+            }
+            
+            .experience-item, .education-item, .project-item {
+                box-shadow: none;
+                padding: 15px;
+            }
+            
+            .experience-item:hover, .education-item:hover, .project-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            footer {
+                margin-top: 20px;
+            }
+            
+            h2::after {
+                background-color: #000;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                border-radius: 10px;
+            }
+            
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-wrapper {
+                padding: 20px;
+            }
+            
+            .profile-name {
+                font-size: 2rem;
+            }
+            
+            .languages {
+                flex-direction: row;
+            }
+            
+            .experience-item, .education-item, .project-item {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="profile-photo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Definiciones de gradientes y efectos -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3498db" />
+      <stop offset="100%" stop-color="#8e44ad" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <linearGradient id="circle-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c3e50" />
+      <stop offset="100%" stop-color="#1a2530" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo circular exterior -->
+  <circle cx="200" cy="200" r="190" fill="url(#bg-gradient)" />
+  
+  <!-- Círculo interior principal -->
+  <circle cx="200" cy="200" r="170" fill="url(#circle-gradient)" stroke="#ffffff" stroke-width="2" opacity="0.9" />
+  
+  <!-- Anillo decorativo -->
+  <circle cx="200" cy="200" r="155" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="3,2" opacity="0.5" />
+  
+  <!-- Elementos decorativos -->
+  <circle cx="120" cy="120" r="12" fill="#ffffff" opacity="0.2" />
+  <circle cx="280" cy="280" r="15" fill="#ffffff" opacity="0.2" />
+  <circle cx="280" cy="120" r="10" fill="#ffffff" opacity="0.2" />
+  <circle cx="120" cy="280" r="8" fill="#ffffff" opacity="0.2" />
+  
+  <!-- Símbolo de código para representar desarrollo -->
+  <path d="M125 190 L100 200 L125 210 M275 190 L300 200 L275 210" 
+        stroke="#ffffff" stroke-width="5" fill="none" opacity="0.8" />
+  
+  <!-- Texto "Fernelydev" -->
+  <text x="200" y="210" 
+        font-family="Arial, sans-serif" font-size="44" font-weight="bold" 
+        text-anchor="middle" fill="#ffffff" filter="url(#shadow)">
+    Fernelydev
+  </text>
+  
+  <!-- Línea decorativa debajo del texto -->
+  <line x1="120" y1="235" x2="280" y2="235" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Detalles del borde exterior -->
+  <circle cx="200" cy="200" r="188" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.3" />
+</svg>
+                </div>
+                <h1 class="profile-name">Fernely U Núñez Sosa</h1>
+                <p class="profile-title">IT Administrator & Web Developer</p>
+                <div class="profile-contact">
+                    <p><a href="https://fernelydev.com" target="_blank"><i class="fas fa-globe"></i> fernelydev.com</a> | <a href="mailto:fernelydev@gmail.com"><i class="fas fa-envelope"></i> fernelydev@gmail.com</a> | <a href="tel:9394051291"><i class="fas fa-phone"></i> (939) 405-1291</a></p>
+                </div>
+                <div class="download-btn">
+                    <a href="#" onclick="window.print();" class="btn-download"><i class="fas fa-download"></i> Descargar PDF</a>
+                </div>
+                <div class="back-btn" style="margin-top: 20px;"></div>
+                    <a href="https://fernelydev.com" class="btn-download"><i class="fas fa-arrow-left"></i> Volver a la página principal</a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content-wrapper">
+            <section>
+                <h2>Objective</h2>
+                <p class="objective-text">To apply my expertise to create value, exceed expectations, and foster growth in a challenging and innovative work environment.</p>
+            </section>
+            
+            <div class="main-grid">
+                <div class="sidebar">
+                    <section>
+                        <h2>Contact</h2>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <div>fernelydev@gmail.com</div>
+                                    <small>(Profesional)</small>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <div>Sosa121991@gmail.com</div>
+                                    <small>(Personal)</small>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(939) 405-1291</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-globe"></i>
+                                <span><a href="https://fernelydev.com" target="_blank">fernelydev.com</a></span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>1051 STATE ROAD 544 E, #191, Haines City, FL 33845</span>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h2>About Me</h2>
+                        <div class="about-me">
+                            <p>I am a driven professional with a proven track record in IT administration, programming, team management, and sales.</p>
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h2>Education</h2>
+                        <div class="education-item">
+                            <div class="item-title">Bachelor's Degree in IT Administration</div>
+                            <div class="item-date">2017</div>
+                            <p class="item-description">Information Systems (Programming) with Honors</p>
+                        </div>
+                        <div class="education-item">
+                            <div class="item-title">Adolfina Irizarry De Puig School</div>
+                            <div class="item-date">2010</div>
+                            <p class="item-description">Graduated with high honors</p>
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h2>Skills</h2>
+                        <div class="skills-grid">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="fas fa-file-word"></i>
+                                <span>Word</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="fas fa-file-excel"></i>
+                                <span>Excel</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="fas fa-file-powerpoint"></i>
+                                <span>PowerPoint</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>Web Design</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="fas fa-users-cog"></i>
+                                <span>Team Management</span>
+                            </div>
+                        
+                            <div class="skill-icon">
+                                <i class="fas fa-desktop"></i>
+                                <span>Computer Tech</span>
+                            </div>
+                           
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h2>Languages</h2>
+                        <div class="languages">
+                            <div class="language-item">
+                                <div class="language-name">Spanish</div>
+                                <div class="language-level">Native</div>
+                            </div>
+                            <div class="language-item">
+                                <div class="language-name">English</div>
+                                <div class="language-level">Intermediate</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="main-content">
+                    <section>
+                        <h2>Experience</h2>
+                        <div class="experience-item">
+                            <div class="item-header">
+                                <div class="item-title">Supervisor and Administrator of Dispatch Area, Windows and Doors Sales</div>
+                                <div class="item-company"><i class="fas fa-building"></i> Condado Window</div>
+                                <div class="item-date"><i class="far fa-calendar-alt"></i> Oct 2020 - Dec 2024</div>
+                            </div>
+                            <ul class="item-duties">
+                                <li>Coordination of activities related to material production and dispatch.</li>
+                                <li>Management of a team responsible for handling orders and customer service.</li>
+                                <li>Supervision and coordination of the dispatch area.</li>
+                                <li>Creation of orders to be sent to production.</li>
+                                <li>Quality supervision in the production and delivery process.</li>
+                                <li>Management of information related to dispatch and sales.</li>
+                                <li>Data entry and management.</li>
+                                <li>Direct sales management and customer service.</li>
+                                <li>Monitoring processes using specialized machinery like forklifts for material loading and handling.</li>
+                                <li>Sales growth through strengthening relationships with clients.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="item-header">
+                                <div class="item-title">Network Installer</div>
+                                <div class="item-company"><i class="fas fa-hotel"></i> Riscarton Hotel</div>
+                                <div class="item-date"><i class="far fa-calendar-alt"></i> Oct 2019 - Sep 2020</div>
+                            </div>
+                            <p class="item-description">
+                                Successfully completed network infrastructure setup for all hotel operations, ensuring seamless connectivity and system reliability.
+                            </p>
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h2>Activities</h2>
+                        <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Expanding skills in Web Development</div>
+                                <div class="item-date"><i class="far fa-calendar-alt"></i> 2024 - Present</div>
+                            </div>
+                            <p class="item-description">
+                                Intensive study of HTML, CSS, and JavaScript, focused on developing responsive websites and interactive web applications.
+                            </p>
+                            <p class="item-description">
+                                Execution of personal projects using modern web design techniques such as flexbox, grid, and CSS animations.
+                            </p>
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h2>Technical Skills</h2>
+                        <ul class="item-duties">
+                            <li>Basic programming.</li>
+                            <li>Data administration.</li>
+                            <li>Advanced knowledge of Microsoft Excel, Word, and PowerPoint.</li>
+                            <li>Certified computer technician.</li>
+                            <li>Extensive knowledge in web design and administration.</li>
+                            <li>Advanced skills in computer management.</li>
+                            <li>Quick learning and adaptation to new technologies.</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Fernely U Núñez Sosa • IT Administrator & Web Developer • <a href="https://fernelydev.com">fernelydev.com</a> • <a href="mailto:fernelydev@gmail.com">fernelydev@gmail.com</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Script to animate skill icons on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillIcons = document.querySelectorAll('.skill-icon');
+            skillIcons.forEach((icon, index) => {
+                icon.style.opacity = '0';
+                icon.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    icon.style.transition = 'all 0.5s ease';
+                    icon.style.opacity = '1';
+                    icon.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>
