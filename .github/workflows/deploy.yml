@@ -24,15 +24,16 @@ jobs:
       - name: Build project
         run: npm run build
 
-    - name: Deploy dist to deploy branch
-  uses: peaceiris/actions-gh-pages@v3
-  with:
-    personal_token: ${{ secrets.GH_PAT }}   # usamos tu secreto
-    publish_dir: ./dist
-    publish_branch: deploy
-    allow_empty_commit: true
-    user_name: FernyDev
-    user_email: fernydev@example.com
+      - name: Deploy dist to deploy branch        # 👈 guion alineado con los otros pasos
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GH_PAT }}    # PAT guardado como secreto
+          publish_dir: ./dist
+          publish_branch: deploy
+          allow_empty_commit: true
+          user_name: FernyDev
+          user_email: fernydev@example.com
+
 
 
 
