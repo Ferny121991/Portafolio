@@ -338,7 +338,7 @@ function App() {
                   rel="noopener noreferrer"
                   className="mt-4 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse hover:animate-none text-center w-full max-w-xs"
                 >
-                  <span className="text-xl">✨ View My Pricess</span>
+                  <span className="text-xl">✨ View My Prices</span>
                   <div className="text-sm opacity-80 mt-1">Check out my affordable packages</div>
                 </a>
               </ScrollReveal>
