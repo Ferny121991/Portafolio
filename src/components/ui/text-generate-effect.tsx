@@ -50,26 +50,34 @@ export const TextGenerateEffect = ({
     
     return (
       <motion.div ref={scope} className="inline">
-        {wordsArray.map((word, idx) => (
-          <motion.span
-            key={`${word}-${idx}`}
-            className="opacity-0 inline-block"
-            style={{
-              color: 'inherit', // Heredar el color del padre
-              filter: filter ? `blur(${filter ? '8px' : '0px'})` : 'none',
-              whiteSpace: 'pre-wrap',
-              wordWrap: 'break-word',
-              display: 'inline',
-              transition: 'all 0.5s ease-out',
-              willChange: 'opacity, filter',
-              backfaceVisibility: 'hidden',
-              WebkitFontSmoothing: 'antialiased',
-              WebkitTextFillColor: 'currentColor', // Forzar color en WebKit (Safari/Chrome)
-            }}
-          >
-            {word}{' '}
-          </motion.span>
-        ))}
+        {wordsArray.map((word, idx) => {
+          // Asegurarse de que no haya espacios vacíos al final
+          if (word.trim() === '') return null;
+          
+          return (
+            <motion.span
+              key={`${word}-${idx}`}
+              className="inline-block"
+              style={{
+                opacity: 0,
+                filter: filter ? 'blur(8px)' : 'none',
+                whiteSpace: 'pre-wrap',
+                wordWrap: 'break-word',
+                display: 'inline',
+                transition: 'all 0.5s ease-out',
+                willChange: 'opacity, filter',
+                color: 'inherit',
+                WebkitTextFillColor: 'currentColor',
+                WebkitFontSmoothing: 'antialiased',
+                WebkitTextSizeAdjust: '100%',
+                textRendering: 'optimizeLegibility',
+                backfaceVisibility: 'hidden',
+              }}
+            >
+              {word}{' '}
+            </motion.span>
+          );
+        })}
       </motion.div>
     );
   };
@@ -77,7 +85,13 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("w-full max-w-3xl mx-auto text-inherit", className)}>
       <div className="w-full">
-        <div className="leading-relaxed tracking-wide text-current">
+        <div 
+          className="leading-relaxed tracking-wide"
+          style={{
+            color: 'inherit',
+            WebkitTextFillColor: 'currentColor',
+          }}
+        >
           {renderWords()}
         </div>
       </div>

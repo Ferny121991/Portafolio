@@ -6,12 +6,14 @@ const words = `I'm a passionate Web Developer with expertise in modern web techn
 export default function TextGenerateEffectDemo() {
   return (
     <div className="px-4 md:px-0">
-      <TextGenerateEffect 
-        words={words} 
-        className="font-sans font-bold tracking-wide text-black dark:text-white text-lg md:text-xl lg:text-2xl" 
-        filter={false}
-        duration={1.5}
-      />
+      <div className="text-black dark:text-white">
+        <TextGenerateEffect 
+          words={words} 
+          className="font-sans font-bold tracking-wide text-lg md:text-xl lg:text-2xl" 
+          filter={false}
+          duration={1.5}
+        />
+      </div>
     </div>
   );
 }
