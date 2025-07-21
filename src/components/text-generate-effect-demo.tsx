@@ -11,7 +11,6 @@ export default function TextGenerateEffectDemo() {
           words={words} 
           className="font-sans font-bold tracking-wide text-lg md:text-xl lg:text-2xl" 
           filter={false}
-          duration={1.5}
         />
       </div>
     </div>
