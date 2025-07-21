@@ -53,8 +53,9 @@ export const TextGenerateEffect = ({
         {wordsArray.map((word, idx) => (
           <motion.span
             key={`${word}-${idx}`}
-            className="dark:text-gray-300 text-gray-700 opacity-0 inline-block"
+            className="opacity-0 inline-block"
             style={{
+              color: 'inherit', // Heredar el color del padre
               filter: filter ? `blur(${filter ? '8px' : '0px'})` : 'none',
               whiteSpace: 'pre-wrap',
               wordWrap: 'break-word',
@@ -62,7 +63,8 @@ export const TextGenerateEffect = ({
               transition: 'all 0.5s ease-out',
               willChange: 'opacity, filter',
               backfaceVisibility: 'hidden',
-              WebkitFontSmoothing: 'subpixel-antialiased',
+              WebkitFontSmoothing: 'antialiased',
+              WebkitTextFillColor: 'currentColor', // Forzar color en WebKit (Safari/Chrome)
             }}
           >
             {word}{' '}
@@ -73,9 +75,9 @@ export const TextGenerateEffect = ({
   };
 
   return (
-    <div className={cn("w-full max-w-3xl mx-auto", className)}>
+    <div className={cn("w-full max-w-3xl mx-auto text-inherit", className)}>
       <div className="w-full">
-        <div className="leading-relaxed tracking-wide">
+        <div className="leading-relaxed tracking-wide text-current">
           {renderWords()}
         </div>
       </div>

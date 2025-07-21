@@ -8,7 +8,7 @@ export default function TextGenerateEffectDemo() {
     <div className="px-4 md:px-0">
       <TextGenerateEffect 
         words={words} 
-        className="font-sans font-bold tracking-wide text-black dark:text-white text-base md:text-lg lg:text-xl" 
+        className="font-sans font-bold tracking-wide text-black dark:text-white text-lg md:text-xl lg:text-2xl" 
         filter={false}
         duration={1.5}
       />
