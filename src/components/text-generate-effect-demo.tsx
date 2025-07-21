@@ -5,7 +5,7 @@ const words = `I'm a passionate Web Developer with expertise in modern web techn
 
 export default function TextGenerateEffectDemo() {
   return (
-    <div className="text-gray-600 leading-relaxed">
+    <div className="text-gray-600 leading-relaxed hidden md:block">
       <TextGenerateEffect words={words} className="font-normal text-base" filter={false} />
     </div>
   );
