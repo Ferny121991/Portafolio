@@ -5,8 +5,13 @@ const words = `I'm a passionate Web Developer with expertise in modern web techn
 
 export default function TextGenerateEffectDemo() {
   return (
-    <div className="text-gray-600 leading-relaxed px-4 md:px-0">
-      <TextGenerateEffect words={words} className="font-normal text-sm md:text-base" filter={false} />
+    <div className="px-4 md:px-0">
+      <TextGenerateEffect 
+        words={words} 
+        className="font-sans font-bold tracking-wide text-gray-700 dark:text-gray-300 text-sm md:text-base lg:text-lg" 
+        filter={false}
+        duration={1.5} // Aumentar la duración de la animación
+      />
     </div>
   );
 }

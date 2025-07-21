@@ -18,43 +18,64 @@ export const TextGenerateEffect = ({
   let wordsArray = words.split(" ");
   
   useEffect(() => {
-    animate(
-      "span",
-      {
-        opacity: 1,
-        filter: filter ? "blur(0px)" : "none",
-      },
-      {
-        duration: duration ? duration : 1,
-        delay: stagger(0.2),
+    // Iniciar la animación después de un pequeño retraso
+    const timer = setTimeout(() => {
+      if (scope.current) {
+        // Usar requestAnimationFrame para asegurar que el navegador esté listo
+        requestAnimationFrame(() => {
+          try {
+            animate(
+              "span",
+              {
+                opacity: 1,
+                filter: filter ? "blur(0px)" : "none",
+              },
+              {
+                duration: duration || 1,
+                delay: stagger(0.1),
+              }
+            );
+          } catch (error) {
+            console.error('Error en la animación:', error);
+          }
+        });
       }
-    );
+    }, 50); // Reducir el tiempo de espera inicial
+    
+    return () => clearTimeout(timer);
   }, [scope.current]);
 
   const renderWords = () => {
+    if (!wordsArray || wordsArray.length === 0) return null;
+    
     return (
-      <motion.div ref={scope}>
-        {wordsArray.map((word, idx) => {
-          return (
-            <motion.span
-              key={word + idx}
-              className="dark:text-white text-black opacity-0"
-              style={{
-                filter: filter ? "blur(10px)" : "none",
-              }}
-            >
-              {word}{' '}
-            </motion.span>
-          );
-        })}
+      <motion.div ref={scope} className="inline">
+        {wordsArray.map((word, idx) => (
+          <motion.span
+            key={`${word}-${idx}`}
+            className="dark:text-gray-300 text-gray-700 opacity-0 inline-block"
+            style={{
+              filter: filter ? `blur(${filter ? '8px' : '0px'})` : 'none',
+              whiteSpace: 'pre-wrap',
+              wordWrap: 'break-word',
+              display: 'inline',
+              transition: 'all 0.5s ease-out',
+              willChange: 'opacity, filter',
+              backfaceVisibility: 'hidden',
+              WebkitFontSmoothing: 'subpixel-antialiased',
+            }}
+          >
+            {word}{' '}
+          </motion.span>
+        ))}
       </motion.div>
     );
   };
 
   return (
-    <div className={cn("font-bold", className)}>
-      <div className="mt-4">
-        <div className="dark:text-white text-black text-2xl leading-snug tracking-wide">
+    <div className={cn("w-full max-w-3xl mx-auto", className)}>
+      <div className="w-full">
+        <div className="leading-relaxed tracking-wide">
           {renderWords()}
         </div>
       </div>
