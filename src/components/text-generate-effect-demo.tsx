@@ -8,9 +8,9 @@ export default function TextGenerateEffectDemo() {
     <div className="px-4 md:px-0">
       <TextGenerateEffect 
         words={words} 
-        className="font-sans font-bold tracking-wide text-gray-700 dark:text-gray-300 text-sm md:text-base lg:text-lg" 
+        className="font-sans font-bold tracking-wide text-gray-700 dark:text-gray-800 text-base md:text-lg lg:text-xl" 
         filter={false}
-        duration={1.5} // Aumentar la duración de la animación
+        duration={1.5}
       />
     </div>
   );
