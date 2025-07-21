@@ -30,7 +30,7 @@ export const TextGenerateEffect = ({
   }, [words]);
 
   return (
-    <div className={cn("w-full max-w-3xl mx-auto text-gray-700 dark:text-gray-300", className)}>
+    <div className={cn("w-full max-w-3xl mx-auto text-gray-700 dark:text-gray-800", className)}>
       <div className="w-full">
         <div className="leading-relaxed tracking-wider">
           {wordsArray.map((word, idx) => (
