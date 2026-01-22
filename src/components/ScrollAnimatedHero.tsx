@@ -2,39 +2,47 @@ import { useState, useEffect, useRef } from 'react';
 
 interface ScrollAnimatedHeroProps {
     totalFrames?: number;
-    scrollHeight?: number; // How many pixels of scroll for full animation
+    scrollHeight?: number;
 }
 
 const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
     totalFrames = 192,
-    scrollHeight = 3000, // 3000px of scroll to complete the animation
+    scrollHeight = 2500,
 }) => {
     const [currentFrame, setCurrentFrame] = useState(0);
     const [imagesLoaded, setImagesLoaded] = useState(false);
-    const containerRef = useRef<HTMLDivElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
     const imagesRef = useRef<HTMLImageElement[]>([]);
+
+    // Generate frame path - simpler format now: frame_000.jpg, frame_001.jpg, etc.
+    const getFramePath = (frameIndex: number) => {
+        return `/homehero/frame_${String(frameIndex).padStart(3, '0')}.jpg`;
+    };
 
     // Preload all images
     useEffect(() => {
         const loadImages = async () => {
-            const imagePromises: Promise<HTMLImageElement>[] = [];
+            const images: HTMLImageElement[] = [];
+            let loadedCount = 0;
 
             for (let i = 0; i < totalFrames; i++) {
-                const promise = new Promise<HTMLImageElement>((resolve, reject) => {
-                    const img = new Image();
-                    img.src = `/homehero/frame_${String(i).padStart(3, '0')}_delay-0.04${i % 3 === 0 ? '1' : '2'}s.jpg`;
-                    img.onload = () => resolve(img);
-                    img.onerror = reject;
-                });
-                imagePromises.push(promise);
-            }
+                const img = new Image();
+                img.src = getFramePath(i);
 
-            try {
-                const loadedImages = await Promise.all(imagePromises);
-                imagesRef.current = loadedImages;
-                setImagesLoaded(true);
-            } catch (error) {
-                console.error('Error loading hero images:', error);
+                img.onload = () => {
+                    loadedCount++;
+                    if (loadedCount === totalFrames) {
+                        imagesRef.current = images;
+                        setImagesLoaded(true);
+                    }
+                };
+
+                img.onerror = () => {
+                    console.error(`Failed to load frame ${i}`);
+                    loadedCount++;
+                };
+
+                images.push(img);
             }
         };
 
@@ -55,41 +63,69 @@ const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll(); // Initial call
+        handleScroll();
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, [totalFrames, scrollHeight]);
 
-    // Generate current frame path
-    const getCurrentFramePath = () => {
-        const frameNum = String(currentFrame).padStart(3, '0');
-        const delay = currentFrame % 3 === 0 ? '1' : '2';
-        return `/homehero/frame_${frameNum}_delay-0.04${delay}s.jpg`;
-    };
+    // Draw current frame to canvas
+    useEffect(() => {
+        if (!imagesLoaded || !canvasRef.current) return;
+
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const img = imagesRef.current[currentFrame];
+        if (!img) return;
+
+        // Set canvas size to window size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Draw image covering the entire canvas
+        const scale = Math.max(
+            canvas.width / img.width,
+            canvas.height / img.height
+        );
+        const x = (canvas.width - img.width * scale) / 2;
+        const y = (canvas.height - img.height * scale) / 2;
+
+        ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+    }, [currentFrame, imagesLoaded]);
+
+    // Handle window resize
+    useEffect(() => {
+        const handleResize = () => {
+            if (canvasRef.current && imagesLoaded) {
+                const canvas = canvasRef.current;
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [imagesLoaded]);
 
     return (
-        <div
-            ref={containerRef}
-            className="fixed inset-0 w-full h-screen z-0"
-            style={{ pointerEvents: 'none' }}
-        >
+        <div className="fixed inset-0 w-full h-screen z-0">
             {/* Loading state */}
             {!imagesLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
-                    <div className="text-white text-xl">Loading animation...</div>
+                    <div className="text-center">
+                        <div className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                        <div className="text-white text-lg">Cargando animación...</div>
+                    </div>
                 </div>
             )}
 
-            {/* Animated background */}
-            <img
-                src={getCurrentFramePath()}
-                alt="Hero Animation"
-                className="w-full h-full object-cover transition-opacity duration-100"
-                style={{ opacity: imagesLoaded ? 1 : 0 }}
+            {/* Canvas for rendering frames */}
+            <canvas
+                ref={canvasRef}
+                className={`w-full h-full ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
+                style={{ display: 'block' }}
             />
-
-            {/* Gradient overlay for better text readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-50/90" />
         </div>
     );
 };
