@@ -49,7 +49,7 @@ function App() {
   const projects = [
     {
       title: 'Visual CSS Grid Editor Pro',
-      description: 'A powerful visual editor for creating CSS Grid layouts with ease using HTML, CSS, and JavaScript',
+      description: ' powerful visual editor for creating CSS Grid layouts with ease using HTML, CSS, and JavaScript',
       image: '/img/visual-grid.png',
       link: 'https://gridedit.netlify.app/',
     },
@@ -97,24 +97,23 @@ function App() {
       <nav className="fixed w-full bg-white/80 backdrop-blur-sm shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <button 
+            <button
               onClick={() => scrollToSection('home')}
               className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300 cursor-pointer"
             >
               fernely.dev
             </button>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`${
-                    activeSection === item
+                  className={`${activeSection === item
                       ? 'text-blue-600'
                       : 'text-gray-600 hover:text-blue-600'
-                  } capitalize transition-colors duration-300`}
+                    } capitalize transition-colors duration-300`}
                 >
                   {item}
                 </button>
@@ -158,7 +157,7 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-blue-50">
           <ParticlesBackground />
         </div>
-        
+
         {/* Contenido (por encima de las partículas) */}
         <div className="relative z-10 text-center px-4">
           <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-6 animate-fade-in">
@@ -179,16 +178,16 @@ function App() {
       {/* About Section */}
       <section id="about" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <ScrollReveal 
-            delay={0.1} 
+          <ScrollReveal
+            delay={0.1}
             rootMargin="0px 0px -100px 0px"
           >
             <h2 className="text-3xl font-bold text-center mb-12">About Me</h2>
           </ScrollReveal>
-          
+
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <ScrollReveal 
-              delay={0.3} 
+            <ScrollReveal
+              delay={0.3}
               rootMargin="0px 0px -50px 0px"
               className="transform transition-all duration-700 hover:rotate-2 hover:scale-105 hover:shadow-xl -mt-4 -mb-2"
             >
@@ -199,9 +198,9 @@ function App() {
                 style={{ maxHeight: '500px' }}
               />
             </ScrollReveal>
-            
-            <ScrollReveal 
-              delay={0.5} 
+
+            <ScrollReveal
+              delay={0.5}
               rootMargin="0px 0px -100px 0px"
             >
               <TextGenerateEffectDemo />
@@ -218,20 +217,18 @@ function App() {
           </ScrollReveal>
           <div className="grid grid-cols-3 gap-8">
             {skills.map((skill, index) => (
-              <ScrollReveal 
+              <ScrollReveal
                 key={skill.name}
-                delay={0.2 + index * 0.1} 
+                delay={0.2 + index * 0.1}
                 rootMargin="0px 0px -50px 0px"
                 className="flex flex-col items-center group"
               >
-                <div className={`p-8 rounded-lg bg-white shadow-lg mb-4 group-hover:shadow-xl transform group-hover:-translate-y-2 transition-all duration-300 ${
-                  skill.name === 'CSS' ? 'relative overflow-hidden' : ''
-                }`}>
-                  <skill.icon 
-                    size={48} 
-                    className={`${skill.color} transform group-hover:scale-110 transition-transform duration-300 ${
-                      skill.name === 'CSS' ? 'relative z-10' : ''
-                    }`}
+                <div className={`p-8 rounded-lg bg-white shadow-lg mb-4 group-hover:shadow-xl transform group-hover:-translate-y-2 transition-all duration-300 ${skill.name === 'CSS' ? 'relative overflow-hidden' : ''
+                  }`}>
+                  <skill.icon
+                    size={48}
+                    className={`${skill.color} transform group-hover:scale-110 transition-transform duration-300 ${skill.name === 'CSS' ? 'relative z-10' : ''
+                      }`}
                   />
                   {skill.name === 'CSS' && (
                     <div className="absolute inset-0 bg-gradient-to-b from-blue-500 to-blue-600 opacity-10"></div>
@@ -293,7 +290,7 @@ function App() {
               Feel free to reach out to me for any questions or opportunities. I'll get back to you as soon as possible.
             </p>
           </ScrollReveal>
-          
+
           <div className="flex flex-col items-center space-y-12">
             <ScrollReveal delay={0.3} rootMargin="0px 0px -50px 0px" className="w-full max-w-md">
               <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
@@ -302,8 +299,8 @@ function App() {
                     <Mail size={32} className="text-blue-600" />
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-800 mb-2">Email Me</h3>
-                  <a 
-                    href="mailto:fernelydev@gmail.com" 
+                  <a
+                    href="mailto:fernelydev@gmail.com"
                     className="text-xl md:text-2xl font-medium text-blue-600 hover:text-blue-700 transition-colors duration-300 break-all"
                   >
                     fernelydev@gmail.com
@@ -316,9 +313,9 @@ function App() {
             </ScrollReveal>
 
             <div className="w-full max-w-md">
-              <ScrollReveal 
-                delay={0.5} 
-                rootMargin="0px 0px -50px 0px" 
+              <ScrollReveal
+                delay={0.5}
+                rootMargin="0px 0px -50px 0px"
                 className="flex flex-col items-center space-y-6"
               >
                 <div className="flex space-x-6">
@@ -332,9 +329,9 @@ function App() {
                     <Mail size={24} />
                   </a>
                 </div>
-                <a 
-                  href="https://precios.fernelydev.com/" 
-                  target="_blank" 
+                <a
+                  href="https://precios.fernelydev.com/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse hover:animate-none text-center w-full max-w-xs"
                 >
