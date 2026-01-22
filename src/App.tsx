@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { getImageUrl } from './utils/imageUtils';
 import { Github, Mail, Menu, X, Code2, FileJson, Image, Atom, Palette, Brain, ChevronDown, Video, Camera, Share2, LayoutGrid } from 'lucide-react';
-import ParticlesBackground from './components/ParticlesBackground';
 import ScrollReveal from './components/ScrollReveal';
 import TextGenerateEffectDemo from './components/text-generate-effect-demo';
 import Footer from './components/Footer';
+import ScrollAnimatedHero from './components/ScrollAnimatedHero';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -182,44 +181,45 @@ function App() {
         </div>
       </nav>
 
+      {/* Scroll Animated Hero Background */}
+      <ScrollAnimatedHero totalFrames={192} scrollHeight={2500} />
+
       {/* Hero Section */}
       <section
         id="home"
         className="relative min-h-screen flex items-center justify-center pt-48 md:pt-72"
       >
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-primary-50/30 to-purple-50/50">
-          <ParticlesBackground />
-        </div>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/20" />
 
         {/* Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <div className="animate-fade-in">
-            <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-primary-700 bg-primary-100/80 rounded-full backdrop-blur-sm">
+            <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-white bg-white/20 rounded-full backdrop-blur-md border border-white/30">
               👋 Welcome to my portfolio
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 animate-slide-up">
-            <span className="text-gray-800">Hi, I'm </span>
-            <span className="gradient-text">Fernely</span>
+            <span className="text-white drop-shadow-lg">Hi, I'm </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">Fernely</span>
           </h1>
 
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 animate-slide-up opacity-0 stagger-2 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 animate-slide-up opacity-0 stagger-2 max-w-2xl mx-auto drop-shadow-md">
             Web Developer & UI/UX Enthusiast creating beautiful,
-            <span className="text-primary-600 font-semibold"> functional</span> digital experiences
+            <span className="text-cyan-300 font-semibold"> functional</span> digital experiences
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up opacity-0 stagger-3">
             <button
               onClick={() => scrollToSection('projects')}
-              className="btn-primary"
+              className="px-8 py-4 bg-white text-gray-900 font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               View My Work
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="btn-secondary"
+              className="px-8 py-4 bg-transparent text-white font-bold rounded-full border-2 border-white/50 backdrop-blur-sm hover:bg-white/20 hover:border-white transition-all duration-300"
             >
               Let's Connect
             </button>
