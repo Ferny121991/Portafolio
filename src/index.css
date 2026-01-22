@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   Base Styles
+   ======================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 antialiased;
+}
+
+/* ========================================
+   Gradient Text Utilities
+   ======================================== */
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+}
+
+.gradient-text-blue {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
+}
+
+/* ========================================
+   Glassmorphism Effects
+   ======================================== */
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-lg border border-gray-200/50 shadow-xl;
+}
+
+.glass-dark {
+  @apply bg-gray-900/80 backdrop-blur-lg border border-gray-700/50;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -14,7 +56,7 @@
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -22,10 +64,10 @@
   }
 }
 
-@keyframes fadeInUp {
+@keyframes slide-down {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -33,42 +75,134 @@
   }
 }
 
-/* Animación de flotación suave para tarjetas */
 @keyframes float {
-  0% {
+  0%, 100% {
     transform: translateY(0px);
   }
   50% {
     transform: translateY(-10px);
   }
-  100% {
-    transform: translateY(0px);
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Animation Classes */
 .animate-fade-in {
-  animation: fade-in 1s ease-out;
+  animation: fade-in 0.8s ease-out forwards;
 }
 
 .animate-slide-up {
-  animation: slide-up 1s ease-out;
+  animation: slide-up 0.8s ease-out forwards;
 }
 
-/* Nueva animación para títulos de sección */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.animate-slide-down {
+  animation: slide-down 0.6s ease-out forwards;
 }
 
-.animate-fadeIn {
-  animation: fadeIn 1.2s ease-out;
-}
-
-/* Clase para la animación de flotación */
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Stagger Animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+
+/* ========================================
+   Button Styles
+   ======================================== */
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-full;
+  @apply shadow-lg shadow-primary-500/25 transition-all duration-300;
+  @apply hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5;
+  @apply active:translate-y-0 active:shadow-md;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-white text-primary-600 font-semibold rounded-full border-2 border-primary-200;
+  @apply transition-all duration-300;
+  @apply hover:bg-primary-50 hover:border-primary-300;
+}
+
+/* ========================================
+   Card Styles
+   ======================================== */
+.card-hover {
+  @apply transition-all duration-500 ease-out;
+  @apply hover:shadow-2xl hover:-translate-y-2;
+}
+
+.card-hover::before {
+  content: '';
+  @apply absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.card-hover:hover::before {
+  @apply opacity-100;
+}
+
+/* ========================================
+   Custom Scrollbar
+   ======================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-primary-400 to-primary-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply from-primary-500 to-primary-700;
+}
+
+/* ========================================
+   Section Dividers
+   ======================================== */
+.section-divider {
+  @apply w-20 h-1 mx-auto mb-8 rounded-full;
+  background: linear-gradient(90deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+}
+
+/* ========================================
+   Mobile Menu Animation
+   ======================================== */
+.mobile-menu-enter {
+  animation: slide-down 0.3s ease-out forwards;
+}
+
+/* ========================================
+   Selection Styles
+   ======================================== */
+::selection {
+  @apply bg-primary-500/30 text-primary-900;
 }
