@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { getImageUrl } from './utils/imageUtils';
 import { Github, Mail, Menu, X, Code2, FileJson, Image, Atom, Palette, Brain, ChevronDown, Video, Camera, Share2, LayoutGrid } from 'lucide-react';
 import ParticlesBackground from './components/ParticlesBackground';
@@ -115,12 +116,21 @@ function App() {
         : 'bg-transparent'
         }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
+          <div className="flex justify-between h-32 md:h-48 items-center">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent hover:from-primary-500 hover:to-purple-500 transition-all duration-300 cursor-pointer"
+              className="flex items-center group cursor-pointer"
             >
-              fernely.dev
+              <div className="relative group">
+                {/* Glow effect backing */}
+                <div className="absolute inset-0 bg-primary-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <img
+                  src="/img/logo.png"
+                  alt="Fernely Dev Logo"
+                  className="h-32 md:h-64 w-auto object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
             </button>
 
             {/* Desktop Navigation */}
@@ -175,7 +185,7 @@ function App() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center pt-16"
+        className="relative min-h-screen flex items-center justify-center pt-48 md:pt-72"
       >
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-primary-50/30 to-purple-50/50">
