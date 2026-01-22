@@ -182,7 +182,7 @@ function App() {
       </nav>
 
       {/* Scroll Animated Hero Background */}
-      <ScrollAnimatedHero totalFrames={192} scrollHeight={2500} />
+      <ScrollAnimatedHero totalFrames={192} scrollHeight={500} />
 
       {/* Hero Section */}
       <section
@@ -239,7 +239,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 md:py-28 bg-white">
+      <section id="about" className="relative z-10 py-20 md:py-28 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">
@@ -273,7 +273,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+      <section id="skills" className="relative z-10 py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-5xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">
@@ -308,7 +308,7 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 md:py-28 bg-white">
+      <section id="projects" className="relative z-10 py-20 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">
@@ -371,7 +371,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 md:py-28 bg-gradient-to-b from-gray-50 to-gray-100">
+      <section id="contact" className="relative z-10 py-20 md:py-28 bg-gradient-to-b from-gray-50 to-gray-100">
         <div className="max-w-4xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">

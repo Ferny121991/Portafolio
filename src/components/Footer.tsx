@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
     };
 
     return (
-        <footer className="relative bg-gray-900 text-white overflow-hidden">
+        <footer className="relative z-10 bg-gray-900 text-white overflow-hidden">
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 via-transparent to-purple-900/20" />
 
