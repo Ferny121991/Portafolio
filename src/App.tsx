@@ -49,7 +49,7 @@ function App() {
   const projects = [
     {
       title: 'Visual CSS Grid Editor Pro',
-      description: ' powerful visual editor for creating CSS Grid layouts with ease using HTML, CSS, and JavaScript',
+      description: 'A powerful visual editor for creating CSS Grid layouts with ease using HTML, CSS, and JavaScript',
       image: '/img/visual-grid.png',
       link: 'https://gridedit.netlify.app/',
     },
@@ -111,8 +111,8 @@ function App() {
                   key={item}
                   onClick={() => scrollToSection(item)}
                   className={`${activeSection === item
-                      ? 'text-blue-600'
-                      : 'text-gray-600 hover:text-blue-600'
+                    ? 'text-blue-600'
+                    : 'text-gray-600 hover:text-blue-600'
                     } capitalize transition-colors duration-300`}
                 >
                   {item}
