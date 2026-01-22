@@ -3,20 +3,23 @@ import { useState, useEffect, useRef } from 'react';
 interface ScrollAnimatedHeroProps {
     totalFrames?: number;
     scrollHeight?: number;
+    startFrame?: number;
 }
 
 const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
-    totalFrames = 192,
-    scrollHeight = 2500,
+    totalFrames = 178,
+    scrollHeight = 500,
+    startFrame = 14,
 }) => {
     const [currentFrame, setCurrentFrame] = useState(0);
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imagesRef = useRef<HTMLImageElement[]>([]);
 
-    // Generate frame path - simpler format now: frame_000.jpg, frame_001.jpg, etc.
+    // Generate frame path - starts from startFrame (14)
     const getFramePath = (frameIndex: number) => {
-        return `/homehero/frame_${String(frameIndex).padStart(3, '0')}.jpg`;
+        const actualFrame = startFrame + frameIndex;
+        return `/homehero/frame_${String(actualFrame).padStart(3, '0')}.jpg`;
     };
 
     // Preload all images
@@ -38,8 +41,13 @@ const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
                 };
 
                 img.onerror = () => {
-                    console.error(`Failed to load frame ${i}`);
+                    console.error(`Failed to load frame ${startFrame + i}`);
                     loadedCount++;
+                    // Still mark as loaded even with errors so it doesn't hang
+                    if (loadedCount === totalFrames) {
+                        imagesRef.current = images;
+                        setImagesLoaded(true);
+                    }
                 };
 
                 images.push(img);
@@ -47,7 +55,7 @@ const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
         };
 
         loadImages();
-    }, [totalFrames]);
+    }, [totalFrames, startFrame]);
 
     // Handle scroll to update frame
     useEffect(() => {
