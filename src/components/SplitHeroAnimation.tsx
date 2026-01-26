@@ -7,9 +7,9 @@ interface SplitHeroAnimationProps {
 }
 
 const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
-    totalFrames = 178,
-    scrollHeight = 600,
-    startFrame = 14,
+    totalFrames = 171,
+    scrollHeight = 800,
+    startFrame = 21,
 }) => {
     const [currentFrame, setCurrentFrame] = useState(0);
     const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -86,13 +86,19 @@ const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
         const img = imagesRef.current[currentFrame];
         if (!img) return;
 
-        // Set canvas size to full container
+        // Set canvas size to full container with high DPI support
+        const dpr = window.devicePixelRatio || 1;
         const containerWidth = canvas.parentElement?.clientWidth || window.innerWidth;
         const containerHeight = canvas.parentElement?.clientHeight || window.innerHeight;
-        canvas.width = containerWidth;
-        canvas.height = containerHeight;
 
-        // Draw image to fit container (cover style)
+        if (canvas.width !== containerWidth * dpr || canvas.height !== containerHeight * dpr) {
+            canvas.width = containerWidth * dpr;
+            canvas.height = containerHeight * dpr;
+            canvas.style.width = `${containerWidth}px`;
+            canvas.style.height = `${containerHeight}px`;
+        }
+
+        // Draw image to fit container (contain or cover depending on user preference, but cover looks more premium)
         const scale = Math.max(
             canvas.width / img.width,
             canvas.height / img.height
@@ -101,6 +107,8 @@ const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
         const y = (canvas.height - img.height * scale) / 2;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
         ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
     }, [currentFrame, imagesLoaded]);
 

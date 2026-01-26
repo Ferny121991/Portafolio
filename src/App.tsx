@@ -249,93 +249,103 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section - Full Background Animation with Left-Aligned Text */}
-      <section
-        id="home"
-        className="relative min-h-screen flex items-center overflow-hidden"
-      >
-        {/* Animation as Full Background */}
-        <div className="absolute inset-0 w-full h-full">
-          <SplitHeroAnimation totalFrames={178} scrollHeight={600} startFrame={14} />
-        </div>
-
-        {/* Gradient overlay for text readability on left side */}
-        <div className={`absolute inset-0 ${isDarkMode
-          ? 'bg-gradient-to-r from-black/80 via-black/40 to-transparent'
-          : 'bg-gradient-to-r from-white/90 via-white/60 to-transparent'}`}
-        />
-
-        {/* Content - Left Aligned */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40">
-          <div className="max-w-2xl">
-
-            <div className="animate-fade-in">
-              <span className={`inline-block px-4 py-2 mb-6 text-xs font-bold tracking-wider rounded-full border uppercase ${isDarkMode
-                ? 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20'
-                : 'text-cyan-600 bg-cyan-500/10 border-cyan-500/20'}`}>
-                ✨ Frontend Architect
-              </span>
+      {/* Hero Section Container with Scroll Pinning Space */}
+      <div className="relative h-[250vh]">
+        {/* Sticky Wrapper - Pins the content while scrolling through the 250vh space */}
+        <section
+          id="home"
+          className={`sticky top-0 h-screen flex items-center overflow-hidden ${isDarkMode ? 'bg-black' : 'bg-white'}`}
+        >
+          {/* Animation as Full Background / Right Side Focus */}
+          <div className="absolute inset-0 w-full h-full flex justify-end">
+            <div className="w-full lg:w-3/4 h-full relative">
+              <SplitHeroAnimation totalFrames={171} scrollHeight={window.innerHeight * 1.5} startFrame={21} />
+              {/* Left-side mask for text readability */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${isDarkMode
+                ? 'from-black via-black/40 to-transparent'
+                : 'from-white via-white/40 to-transparent'}`}
+              />
+              {/* Bottom mask to blend with the next section and remove the "line" */}
+              <div className={`absolute inset-0 bg-gradient-to-t ${isDarkMode
+                ? 'from-black via-black/80 to-transparent'
+                : 'from-white via-white/80 to-transparent'}`}
+                style={{ height: '30%', top: 'auto', bottom: 0 }}
+              />
             </div>
+          </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 animate-slide-up">
-              <span className={`${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Hi, I'm </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">Fernely</span>
-            </h1>
+          {/* Content - Left Aligned */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40">
+            <div className="max-w-2xl text-left">
 
-            <p className={`text-lg sm:text-xl md:text-2xl mb-8 animate-slide-up opacity-0 stagger-2 max-w-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-              Crafting premium digital experiences through
-              <span className={`font-semibold ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`}> modern web technologies</span>
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 animate-slide-up opacity-0 stagger-3">
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
-              >
-                Explore Projects
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className={`px-8 py-4 font-bold rounded-xl border-2 backdrop-blur-sm hover:scale-105 transition-all duration-300 ${isDarkMode
-                  ? 'bg-white/5 text-white border-white/20 hover:bg-white/10 hover:border-white/40'
-                  : 'bg-gray-900/5 text-gray-900 border-gray-900/20 hover:bg-gray-900/10 hover:border-gray-900/40'}`}
-              >
-                Let's Talk
-              </button>
-            </div>
-
-            {/* Stats */}
-            <div className="mt-12 flex flex-wrap gap-8 animate-fade-in opacity-0 stagger-4">
-              <div>
-                <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>5+</div>
-                <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Years Experience</div>
+              <div className="animate-fade-in">
+                <span className={`inline-block px-4 py-2 mb-6 text-xs font-bold tracking-wider rounded-full border uppercase ${isDarkMode
+                  ? 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20'
+                  : 'text-cyan-600 bg-cyan-500/10 border-cyan-500/20'}`}>
+                  ✨ Frontend Architect
+                </span>
               </div>
-              <div>
-                <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>50+</div>
-                <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Projects Done</div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 animate-slide-up leading-tight">
+                <span className={`${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Hi, I'm </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">Fernely</span>
+              </h1>
+
+              <p className={`text-lg sm:text-xl md:text-2xl mb-8 animate-slide-up opacity-0 stagger-2 max-w-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Crafting premium digital experiences through
+                <span className={`font-semibold ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`}> modern web technologies</span>
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 animate-slide-up opacity-0 stagger-3">
+                <button
+                  onClick={() => scrollToSection('projects')}
+                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
+                >
+                  Explore Projects
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className={`px-8 py-4 font-bold rounded-xl border-2 backdrop-blur-sm hover:scale-105 transition-all duration-300 ${isDarkMode
+                    ? 'bg-white/5 text-white border-white/20 hover:bg-white/10 hover:border-white/40'
+                    : 'bg-gray-900/5 text-gray-900 border-gray-900/20 hover:bg-gray-900/10 hover:border-gray-900/40'}`}
+                >
+                  Let's Talk
+                </button>
               </div>
-              <div>
-                <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>100%</div>
-                <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Client Happy</div>
+
+              {/* Quick Stats */}
+              <div className="mt-16 grid grid-cols-3 gap-8 animate-fade-in opacity-0 stagger-4 max-w-md">
+                <div>
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>5+</div>
+                  <div className={`text-[10px] uppercase tracking-widest font-bold ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>Years</div>
+                </div>
+                <div>
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>50+</div>
+                  <div className={`text-[10px] uppercase tracking-widest font-bold ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>Projects</div>
+                </div>
+                <div>
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>100%</div>
+                  <div className={`text-[10px] uppercase tracking-widest font-bold ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>Happy</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block z-10">
-          <button
-            onClick={() => scrollToSection('about')}
-            className={`${isDarkMode ? 'text-white/60 hover:text-cyan-400' : 'text-gray-600 hover:text-cyan-600'} transition-colors`}
-            aria-label="Scroll to about section"
-          >
-            <ChevronDown size={32} />
-          </button>
-        </div>
-      </section>
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block z-10">
+            <button
+              onClick={() => scrollToSection('about')}
+              className={`${isDarkMode ? 'text-white/60 hover:text-cyan-400' : 'text-gray-600 hover:text-cyan-600'} transition-colors`}
+              aria-label="Scroll to about section"
+            >
+              <ChevronDown size={32} />
+            </button>
+          </div>
+        </section>
+      </div>
 
       {/* About Section */}
-      <section id="about" className={`relative z-10 py-20 md:py-28 ${isDarkMode ? 'bg-gray-950' : 'bg-white'}`}>
+      <section id="about" className={`relative z-10 py-20 md:py-28 ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
         <div className="max-w-5xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">
