@@ -136,23 +136,22 @@ function App() {
             {/* Logo & Brand */}
             <button
               onClick={() => scrollToSection('home')}
-              className="flex items-center gap-2 group cursor-pointer"
+              className="flex items-center gap-3 group cursor-pointer"
             >
-              <div className="relative flex items-center justify-center p-1">
-                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-md rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <img
-                  src="/img/logo.png"
-                  alt="Logo"
-                  className="h-10 md:h-12 w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg] drop-shadow-[0_0_12px_rgba(6,182,212,0.4)] brightness-110 contrast-105"
+                  src="/img/logo_icon.png"
+                  alt="Fernely Dev Logo"
+                  className="h-24 md:h-32 w-auto object-contain transition-all duration-500 group-hover:scale-105 group-hover:rotate-2 drop-shadow-[0_8px_20px_rgba(6,182,212,0.3)]"
                 />
               </div>
-              <div className="flex flex-col items-start -space-y-1">
-                <span className={`text-xl md:text-2xl font-black tracking-tight transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              <div className="flex flex-col items-start leading-none gap-0.5 md:gap-1">
+                <span className={`text-xl md:text-2xl font-black tracking-tighter transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                   FERNELY<span className="text-cyan-500">DEV</span>
                 </span>
-                <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-cyan-500 to-purple-500 transition-all duration-500" />
-                <span className={`text-[9px] uppercase tracking-[0.3em] font-bold opacity-70 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Creative Solutions
+                <span className={`text-[7px] md:text-[9px] uppercase tracking-[0.2em] font-bold ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                  Creative Digital Solutions
                 </span>
               </div>
             </button>

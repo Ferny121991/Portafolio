@@ -37,16 +37,23 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     {/* Brand Section */}
-                    <div className="text-center md:text-left flex flex-col items-center md:items-start gap-2">
-                        <div className="flex items-center gap-3">
-                            <img src="/img/logo.png" alt="Logo" className="h-10 w-auto opacity-80" />
-                            <h3 className={`text-2xl font-black tracking-tighter ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                                FERNELY<span className="text-cyan-500">DEV</span>
-                            </h3>
+                    {/* Brand Section */}
+                    <div className="text-center md:text-left flex flex-col items-center md:items-start group">
+                        <div className="flex items-center gap-4">
+                            <img
+                                src="/img/logo_icon.png"
+                                alt="Fernely Dev"
+                                className="h-24 w-auto brightness-110 drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <div className="flex flex-col items-start leading-none">
+                                <span className={`text-2xl font-black tracking-tighter ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                                    FERNELY<span className="text-cyan-500">DEV</span>
+                                </span>
+                                <span className={`text-[10px] uppercase tracking-[0.2em] font-bold ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                                    Creative Digital Solutions
+                                </span>
+                            </div>
                         </div>
-                        <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} text-xs uppercase tracking-widest font-bold opacity-60`}>
-                            Creative Digital Solutions
-                        </p>
                     </div>
 
                     {/* Navigation Links */}
