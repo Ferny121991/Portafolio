@@ -4,7 +4,7 @@ import { Github, Mail, Menu, X, Code2, FileJson, Image, Atom, Palette, Brain, Ch
 import ScrollReveal from './components/ScrollReveal';
 import TextGenerateEffectDemo from './components/text-generate-effect-demo';
 import Footer from './components/Footer';
-import ScrollAnimatedHero from './components/ScrollAnimatedHero';
+import SplitHeroAnimation from './components/SplitHeroAnimation';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -249,63 +249,95 @@ function App() {
         </div>
       </nav>
 
-      {/* Scroll Animated Hero Background */}
-      <ScrollAnimatedHero totalFrames={178} scrollHeight={500} startFrame={14} />
-
-      {/* Hero Section */}
+      {/* Hero Section - Split Layout */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center pt-48 md:pt-72"
+        className="relative min-h-screen flex items-center pt-20 md:pt-28 overflow-hidden"
       >
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/20" />
+        {/* Background gradient */}
+        <div className={`absolute inset-0 ${isDarkMode
+          ? 'bg-gradient-to-br from-gray-950 via-gray-900 to-black'
+          : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'}`}
+        />
 
-        {/* Content */}
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          {/* Glassmorphism Card */}
-          <div className="glass-premium rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl animate-fade-in">
-            <div>
-              <span className="inline-block px-4 py-2 mb-6 text-xs font-bold tracking-wider text-cyan-400 bg-cyan-400/10 rounded-full border border-cyan-400/20 uppercase">
-                ✨ Frontend Architect
-              </span>
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-30">
+          <div className={`absolute top-20 left-10 w-72 h-72 rounded-full blur-3xl ${isDarkMode ? 'bg-cyan-500/10' : 'bg-cyan-300/20'}`} />
+          <div className={`absolute bottom-20 right-10 w-96 h-96 rounded-full blur-3xl ${isDarkMode ? 'bg-purple-500/10' : 'bg-purple-300/20'}`} />
+        </div>
+
+        {/* Content Container - Two Columns */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+            {/* Left Column - Text Content */}
+            <div className="flex-1 text-center lg:text-left">
+              <div className="animate-fade-in">
+                <span className="inline-block px-4 py-2 mb-6 text-xs font-bold tracking-wider text-cyan-400 bg-cyan-400/10 rounded-full border border-cyan-400/20 uppercase">
+                  ✨ Frontend Architect
+                </span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 animate-slide-up">
+                <span className={`${isDarkMode ? 'text-white' : 'text-gray-900'} drop-shadow-sm`}>Hi, I'm </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">Fernely</span>
+              </h1>
+
+              <p className={`text-lg sm:text-xl md:text-2xl mb-8 animate-slide-up opacity-0 stagger-2 max-w-xl mx-auto lg:mx-0 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                Crafting premium digital experiences through
+                <span className="text-cyan-500 font-semibold"> modern web technologies</span>
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up opacity-0 stagger-3">
+                <button
+                  onClick={() => scrollToSection('projects')}
+                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
+                >
+                  Explore Projects
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className={`px-8 py-4 font-bold rounded-xl border-2 backdrop-blur-sm hover:scale-105 transition-all duration-300 ${isDarkMode
+                    ? 'bg-white/5 text-white border-white/20 hover:bg-white/10 hover:border-white/40'
+                    : 'bg-gray-900/5 text-gray-900 border-gray-900/20 hover:bg-gray-900/10 hover:border-gray-900/40'}`}
+                >
+                  Let's Talk
+                </button>
+              </div>
+
+              {/* Stats or quick info */}
+              <div className="mt-12 flex flex-wrap gap-8 justify-center lg:justify-start animate-fade-in opacity-0 stagger-4">
+                <div className="text-center">
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>5+</div>
+                  <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Years Experience</div>
+                </div>
+                <div className="text-center">
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>50+</div>
+                  <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Projects Done</div>
+                </div>
+                <div className="text-center">
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>100%</div>
+                  <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Client Happy</div>
+                </div>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 animate-slide-up">
-              <span className={`${isDarkMode ? 'text-white' : 'text-gray-900'} drop-shadow-lg`}>Hi, I'm </span>
-              <span className="text-gradient-premium animate-gradient-text">Fernely</span>
-            </h1>
-
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 animate-slide-up opacity-0 stagger-2 max-w-2xl mx-auto drop-shadow-md">
-              Crafting premium digital experiences through
-              <span className="text-cyan-400 font-semibold"> modern web technologies</span>
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up opacity-0 stagger-3">
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
-              >
-                Explore Projects
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="px-8 py-4 bg-white/5 text-white font-bold rounded-xl border border-white/20 backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300"
-              >
-                Let's Talk
-              </button>
+            {/* Right Column - Animation Canvas */}
+            <div className="flex-1 w-full max-w-lg lg:max-w-xl h-[400px] sm:h-[500px] lg:h-[600px]">
+              <SplitHeroAnimation totalFrames={178} scrollHeight={600} startFrame={14} />
             </div>
           </div>
+        </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-gray-400 hover:text-primary-600 transition-colors"
-              aria-label="Scroll to about section"
-            >
-              <ChevronDown size={32} />
-            </button>
-          </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+          <button
+            onClick={() => scrollToSection('about')}
+            className={`${isDarkMode ? 'text-gray-400 hover:text-cyan-400' : 'text-gray-500 hover:text-cyan-600'} transition-colors`}
+            aria-label="Scroll to about section"
+          >
+            <ChevronDown size={32} />
+          </button>
         </div>
       </section>
 
