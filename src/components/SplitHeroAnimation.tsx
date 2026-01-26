@@ -13,7 +13,6 @@ const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
 }) => {
     const [currentFrame, setCurrentFrame] = useState(0);
     const [imagesLoaded, setImagesLoaded] = useState(false);
-    const [scrollProgress, setScrollProgress] = useState(0);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imagesRef = useRef<HTMLImageElement[]>([]);
 
@@ -57,7 +56,7 @@ const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
         loadImages();
     }, [totalFrames, startFrame]);
 
-    // Handle scroll to update frame and 3D transform progress
+    // Handle scroll to update frame
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
@@ -68,7 +67,6 @@ const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
                 totalFrames - 1
             );
             setCurrentFrame(frameIndex);
-            setScrollProgress(scrollFraction);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -88,9 +86,9 @@ const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
         const img = imagesRef.current[currentFrame];
         if (!img) return;
 
-        // Set canvas size
-        const containerWidth = canvas.parentElement?.clientWidth || 600;
-        const containerHeight = canvas.parentElement?.clientHeight || 600;
+        // Set canvas size to full container
+        const containerWidth = canvas.parentElement?.clientWidth || window.innerWidth;
+        const containerHeight = canvas.parentElement?.clientHeight || window.innerHeight;
         canvas.width = containerWidth;
         canvas.height = containerHeight;
 
@@ -110,8 +108,8 @@ const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
     useEffect(() => {
         const handleResize = () => {
             if (canvasRef.current && imagesLoaded) {
-                const containerWidth = canvasRef.current.parentElement?.clientWidth || 600;
-                const containerHeight = canvasRef.current.parentElement?.clientHeight || 600;
+                const containerWidth = canvasRef.current.parentElement?.clientWidth || window.innerWidth;
+                const containerHeight = canvasRef.current.parentElement?.clientHeight || window.innerHeight;
                 canvasRef.current.width = containerWidth;
                 canvasRef.current.height = containerHeight;
             }
@@ -121,53 +119,24 @@ const SplitHeroAnimation: React.FC<SplitHeroAnimationProps> = ({
         return () => window.removeEventListener('resize', handleResize);
     }, [imagesLoaded]);
 
-    // 3D transform calculations based on scroll
-    const rotateY = scrollProgress * 15; // Rotate up to 15 degrees
-    const rotateX = scrollProgress * -5; // Slight tilt
-    const scale = 1 - scrollProgress * 0.1; // Slightly shrink
-    const translateY = scrollProgress * 50; // Move up slightly
-
     return (
-        <div
-            className="relative w-full h-full perspective-1000"
-            style={{ perspective: '1200px' }}
-        >
-            <div
-                className="relative w-full h-full transition-transform duration-100 ease-out"
-                style={{
-                    transform: `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale}) translateY(${translateY}px)`,
-                    transformStyle: 'preserve-3d',
-                }}
-            >
-                {/* Glow background */}
-                <div
-                    className="absolute -inset-10 bg-gradient-to-br from-cyan-500/30 via-purple-500/20 to-pink-500/30 blur-3xl rounded-full opacity-60"
-                    style={{ opacity: 0.6 - scrollProgress * 0.4 }}
-                />
-
-                {/* Canvas container with rounded corners and shadow */}
-                <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/20 border border-white/10">
-                    {/* Loading state */}
-                    {!imagesLoaded && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-900/80 backdrop-blur-xl">
-                            <div className="text-center">
-                                <div className="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                                <div className="text-white text-sm">Loading...</div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Canvas for rendering frames */}
-                    <canvas
-                        ref={canvasRef}
-                        className={`w-full h-full ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
-                        style={{ display: 'block' }}
-                    />
-
-                    {/* Overlay shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
+        <div className="relative w-full h-full">
+            {/* Loading state */}
+            {!imagesLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center bg-transparent">
+                    <div className="text-center">
+                        <div className="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                        <div className="text-white/60 text-sm">Loading...</div>
+                    </div>
                 </div>
-            </div>
+            )}
+
+            {/* Canvas for rendering frames - full background, no styling */}
+            <canvas
+                ref={canvasRef}
+                className={`w-full h-full object-cover ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
+                style={{ display: 'block' }}
+            />
         </div>
     );
 };
