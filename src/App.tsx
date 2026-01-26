@@ -316,11 +316,11 @@ function App() {
               {/* Quick Stats */}
               <div className="mt-16 grid grid-cols-3 gap-8 animate-fade-in opacity-0 stagger-4 max-w-md">
                 <div>
-                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>5+</div>
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>3+</div>
                   <div className={`text-[10px] uppercase tracking-widest font-bold ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>Years</div>
                 </div>
                 <div>
-                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>50+</div>
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>10+</div>
                   <div className={`text-[10px] uppercase tracking-widest font-bold ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>Projects</div>
                 </div>
                 <div>
