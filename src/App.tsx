@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getImageUrl } from './utils/imageUtils';
-import { Github, Mail, Menu, X, Code2, FileJson, Image, Atom, Palette, Brain, ChevronDown, Video, Camera, Share2, LayoutGrid } from 'lucide-react';
+import { Github, Mail, Menu, X, Code2, FileJson, Image, Atom, Palette, Brain, ChevronDown, Video, Camera, Share2, LayoutGrid, Sun, Moon } from 'lucide-react';
 import ScrollReveal from './components/ScrollReveal';
 import TextGenerateEffectDemo from './components/text-generate-effect-demo';
 import Footer from './components/Footer';
@@ -10,6 +10,15 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,6 +65,13 @@ function App() {
   ];
 
   const projects = [
+    {
+      title: 'FlujoEclesial Studio (Oasis Project)',
+      description: 'A professional projector control center for churches, with real-time sync and content management.',
+      image: '/img/oasis.png',
+      link: 'https://oasis-project.iglesiadeoasis.com/',
+      tags: ['React', 'Supabase', 'Tailwind'],
+    },
     {
       title: 'Visual CSS Grid Editor Pro',
       description: 'A powerful visual editor for creating CSS Grid layouts with ease using HTML, CSS, and JavaScript',
@@ -108,72 +124,125 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 relative">
+    <div className="min-h-screen dark-premium-bg relative selection:bg-cyan-500/30 transition-colors duration-300">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-white/90 backdrop-blur-lg shadow-lg shadow-gray-200/50'
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled
+        ? (isDarkMode ? 'bg-black/80 backdrop-blur-2xl' : 'bg-white/80 backdrop-blur-2xl shadow-xl')
         : 'bg-transparent'
         }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-32 md:h-48 items-center">
+          <div className="flex justify-between h-20 md:h-24 items-center">
+
+            {/* Logo & Brand */}
             <button
               onClick={() => scrollToSection('home')}
-              className="flex items-center group cursor-pointer"
+              className="flex items-center gap-2 group cursor-pointer"
             >
-              <div className="relative group">
-                {/* Glow effect backing */}
-                <div className="absolute inset-0 bg-primary-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+              <div className="relative flex items-center justify-center p-1">
+                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-md rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <img
                   src="/img/logo.png"
-                  alt="Fernely Dev Logo"
-                  className="h-32 md:h-64 w-auto object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
+                  alt="Logo"
+                  className="h-10 md:h-12 w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg] drop-shadow-[0_0_12px_rgba(6,182,212,0.4)] brightness-110 contrast-105"
                 />
+              </div>
+              <div className="flex flex-col items-start -space-y-1">
+                <span className={`text-xl md:text-2xl font-black tracking-tight transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  FERNELY<span className="text-cyan-500">DEV</span>
+                </span>
+                <div className="h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-cyan-500 to-purple-500 transition-all duration-500" />
+                <span className={`text-[9px] uppercase tracking-[0.3em] font-bold opacity-70 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                  Creative Solutions
+                </span>
               </div>
             </button>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
-              {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium capitalize transition-all duration-300 ${activeSection === item
-                    ? 'bg-primary-100 text-primary-700'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-                    }`}
-                >
-                  {item}
-                </button>
-              ))}
+            {/* Desktop Navigation - Premium Pill Style */}
+            <div className="hidden md:flex items-center">
+              {/* Navigation Pills Container */}
+              <div className={`flex items-center gap-1 px-2 py-2 rounded-full ${isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-gray-100/80 border border-gray-200/50'} backdrop-blur-xl`}>
+                {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item)}
+                    className={`relative px-5 py-2.5 rounded-full text-sm font-semibold capitalize transition-all duration-300 ${activeSection === item
+                      ? (isDarkMode
+                        ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-cyan-500/25'
+                        : 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-cyan-500/25')
+                      : (isDarkMode
+                        ? 'text-gray-300 hover:text-white hover:bg-white/10'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-white')
+                      }`}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+
+              {/* Theme Toggle - Premium Style */}
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className={`ml-4 relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 group overflow-hidden ${isDarkMode
+                  ? 'bg-gradient-to-br from-indigo-600 to-purple-700 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50'
+                  : 'bg-gradient-to-br from-amber-400 to-orange-500 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50'}`}
+                aria-label="Toggle Theme"
+              >
+                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className={`transition-transform duration-500 ${isDarkMode ? 'rotate-0' : 'rotate-180'}`}>
+                  {isDarkMode ? <Moon size={20} className="text-white" /> : <Sun size={20} className="text-white" />}
+                </div>
+              </button>
             </div>
 
             {/* Mobile Navigation Button */}
-            <button
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="md:hidden flex items-center gap-3">
+              {/* Mobile Theme Toggle */}
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isDarkMode
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-amber-400 text-white'}`}
+                aria-label="Toggle Theme"
+              >
+                {isDarkMode ? <Moon size={18} /> : <Sun size={18} />}
+              </button>
+
+              {/* Hamburger Menu */}
+              <button
+                className={`p-2.5 rounded-xl transition-all duration-300 ${isDarkMode
+                  ? 'bg-white/10 text-white hover:bg-white/20'
+                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
-          }`}>
-          <div className="bg-white/95 backdrop-blur-lg border-t border-gray-100 shadow-lg">
-            <div className="px-4 py-3 space-y-1">
-              {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+        {/* Mobile Navigation Menu - Premium Slide Down */}
+        <div className={`md:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMenuOpen ? 'max-h-[450px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className={`${isDarkMode ? 'bg-black/95 backdrop-blur-3xl border-t border-white/10' : 'bg-white/95 backdrop-blur-3xl border-t border-gray-200'} shadow-[0_20px_50px_rgba(0,0,0,0.3)]`}>
+            <div className="px-4 py-8 space-y-3">
+              {['home', 'about', 'skills', 'projects', 'contact'].map((item, index) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`block w-full text-left px-4 py-3 rounded-lg capitalize transition-all duration-200 ${activeSection === item
-                    ? 'bg-primary-50 text-primary-700 font-medium'
-                    : 'text-gray-600 hover:bg-gray-50'
+                  className={`block w-full text-left px-6 py-4 rounded-2xl capitalize font-bold text-lg transition-all duration-300 transform ${isMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'} ${activeSection === item
+                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-xl scale-[1.02]'
+                    : (isDarkMode
+                      ? 'text-gray-300 hover:text-white hover:bg-white/10'
+                      : 'text-gray-700 hover:bg-gray-100')
                     }`}
+                  style={{
+                    transitionDelay: `${index * 60}ms`,
+                  }}
                 >
-                  {item}
+                  <div className="flex items-center justify-between">
+                    <span>{item}</span>
+                    <div className={`w-1.5 h-1.5 rounded-full bg-white transition-all duration-500 ${activeSection === item ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
+                  </div>
                 </button>
               ))}
             </div>
@@ -195,35 +264,35 @@ function App() {
         {/* Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           {/* Glassmorphism Card */}
-          <div className="bg-black/30 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl">
-            <div className="animate-fade-in">
-              <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-white bg-white/20 rounded-full backdrop-blur-md border border-white/30">
-                👋 Welcome to my portfolio
+          <div className="glass-premium rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl animate-fade-in">
+            <div>
+              <span className="inline-block px-4 py-2 mb-6 text-xs font-bold tracking-wider text-cyan-400 bg-cyan-400/10 rounded-full border border-cyan-400/20 uppercase">
+                ✨ Frontend Architect
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 animate-slide-up">
-              <span className="text-white drop-shadow-lg">Hi, I'm </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">Fernely</span>
+              <span className={`${isDarkMode ? 'text-white' : 'text-gray-900'} drop-shadow-lg`}>Hi, I'm </span>
+              <span className="text-gradient-premium animate-gradient-text">Fernely</span>
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 animate-slide-up opacity-0 stagger-2 max-w-2xl mx-auto drop-shadow-md">
-              Web Developer & UI/UX Enthusiast creating beautiful,
-              <span className="text-cyan-300 font-semibold"> functional</span> digital experiences
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 animate-slide-up opacity-0 stagger-2 max-w-2xl mx-auto drop-shadow-md">
+              Crafting premium digital experiences through
+              <span className="text-cyan-400 font-semibold"> modern web technologies</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up opacity-0 stagger-3">
               <button
                 onClick={() => scrollToSection('projects')}
-                className="px-8 py-4 bg-white text-gray-900 font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
               >
-                View My Work
+                Explore Projects
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-8 py-4 bg-transparent text-white font-bold rounded-full border-2 border-white/50 backdrop-blur-sm hover:bg-white/20 hover:border-white transition-all duration-300"
+                className="px-8 py-4 bg-white/5 text-white font-bold rounded-xl border border-white/20 backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300"
               >
-                Let's Connect
+                Let's Talk
               </button>
             </div>
           </div>
@@ -242,11 +311,11 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative z-10 py-20 md:py-28 bg-white">
+      <section id="about" className={`relative z-10 py-20 md:py-28 ${isDarkMode ? 'bg-gray-950' : 'bg-white'}`}>
         <div className="max-w-5xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">About Me</h2>
+              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>About Me</h2>
               <div className="section-divider" />
             </div>
           </ScrollReveal>
@@ -276,13 +345,13 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="relative z-10 py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+      <section id="skills" className={`relative z-10 py-20 md:py-28 ${isDarkMode ? 'bg-black' : 'bg-gray-50'}`}>
         <div className="max-w-5xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Skills & Tools</h2>
+              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Skills & Tools</h2>
               <div className="section-divider" />
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
                 Technologies and tools I use to bring ideas to life
               </p>
             </div>
@@ -296,12 +365,12 @@ function App() {
                 rootMargin="0px 0px -50px 0px"
                 className="group"
               >
-                <div className={`${skill.bg} p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100`}>
+                <div className="glass-premium glass-premium-hover p-6 rounded-2xl shadow-sm border border-white/5">
                   <div className="flex flex-col items-center text-center">
-                    <div className="mb-4 p-3 rounded-xl bg-white shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <div className="mb-4 p-3 rounded-xl bg-white/5 backdrop-blur-md shadow-sm group-hover:scale-110 transition-transform duration-300">
                       <skill.icon size={32} className={skill.color} />
                     </div>
-                    <span className="text-sm md:text-base font-semibold text-gray-700">{skill.name}</span>
+                    <span className={`text-sm md:text-base font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{skill.name}</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -311,14 +380,15 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative z-10 py-20 md:py-28 bg-white">
+      <section id="projects" className={`relative z-10 py-20 md:py-28 ${isDarkMode ? 'bg-gray-950' : 'bg-white'}`}>
         <div className="max-w-6xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Featured Projects</h2>
+              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Featured Projects</h2>
               <div className="section-divider" />
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                A selection of my recent work and personal projects
+              <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
+                A selection of my recent work including the premium
+                <span className="text-cyan-400 font-semibold"> FlujoEclesial Studio</span>
               </p>
             </div>
           </ScrollReveal>
@@ -329,42 +399,49 @@ function App() {
                 key={project.title}
                 delay={0.1 + index * 0.1}
                 rootMargin="0px 0px -50px 0px"
-                className="group"
               >
-                <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
-                  <div className="relative overflow-hidden">
+                <div className="glass-premium glass-premium-hover h-full flex flex-col rounded-2xl overflow-hidden group">
+                  <div className="relative overflow-hidden aspect-video">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                    {/* Tags */}
-                    <div className="absolute bottom-3 left-3 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="px-2 py-1 text-xs font-medium bg-white/90 backdrop-blur-sm rounded-full text-gray-700">
+                    {/* Tags overlay */}
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+                      {project.tags.slice(0, 2).map((tag) => (
+                        <span key={tag} className="px-2 py-1 text-[10px] font-bold bg-black/50 backdrop-blur-md rounded-md text-cyan-400 border border-cyan-400/20 uppercase tracking-tighter">
                           {tag}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-primary-600 transition-colors">
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className={`text-lg font-bold mb-2 group-hover:text-cyan-400 transition-colors ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} text-sm mb-6 line-clamp-3`}>
                       {project.description}
                     </p>
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-full px-4 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-xl transition-all duration-300 hover:from-primary-600 hover:to-primary-700 hover:shadow-lg hover:shadow-primary-500/25"
-                    >
-                      Visit Project →
-                    </a>
+
+                    <div className="mt-auto pt-4 flex items-center justify-between border-t border-white/5">
+                      <div className="flex gap-1">
+                        {project.tags.map((tag) => (
+                          <div key={tag} className="w-1.5 h-1.5 rounded-full bg-cyan-500/50" />
+                        ))}
+                      </div>
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`text-xs font-bold uppercase tracking-widest hover:text-cyan-400 transition-colors flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
+                      >
+                        EXPLORE <span className="text-lg">→</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -374,13 +451,13 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative z-10 py-20 md:py-28 bg-gradient-to-b from-gray-50 to-gray-100">
+      <section id="contact" className={`relative z-10 py-20 md:py-28 ${isDarkMode ? 'bg-black' : 'bg-gray-50'}`}>
         <div className="max-w-4xl mx-auto px-4">
           <ScrollReveal delay={0.1} rootMargin="0px 0px -100px 0px">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Let's Work Together</h2>
+              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Let's Work Together</h2>
               <div className="section-divider" />
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
                 Have a project in mind? I'd love to hear about it.
                 Send me a message and let's create something amazing.
               </p>
@@ -389,15 +466,15 @@ function App() {
 
           <div className="flex flex-col items-center space-y-8">
             <ScrollReveal delay={0.2} rootMargin="0px 0px -50px 0px" className="w-full max-w-md">
-              <div className="glass-card p-8 rounded-3xl hover:shadow-2xl transition-all duration-300">
+              <div className="glass-premium p-8 rounded-3xl hover:shadow-cyan-500/10 transition-all duration-300 border border-white/5">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary-500/25">
+                  <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-cyan-500/25">
                     <Mail size={32} className="text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Email Me</h3>
+                  <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Email Me</h3>
                   <a
                     href="mailto:fernelydev@gmail.com"
-                    className="text-lg md:text-xl font-medium text-primary-600 hover:text-primary-700 transition-colors duration-300 break-all"
+                    className="text-lg md:text-xl font-medium text-cyan-400 hover:text-cyan-300 transition-colors duration-300 break-all"
                   >
                     fernelydev@gmail.com
                   </a>
@@ -414,21 +491,21 @@ function App() {
                   href="https://github.com/Ferny121991"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-600 hover:text-primary-600 hover:shadow-lg hover:scale-110 transition-all duration-300"
+                  className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-110 transition-all duration-300"
                   aria-label="GitHub Profile"
                 >
                   <Github size={22} />
                 </a>
                 <a
                   href="/resume.html"
-                  className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-600 hover:text-primary-600 hover:shadow-lg hover:scale-110 transition-all duration-300"
+                  className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-110 transition-all duration-300"
                   aria-label="View Resume"
                 >
                   <FileJson size={22} />
                 </a>
                 <a
                   href="mailto:fernelydev@gmail.com"
-                  className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-gray-600 hover:text-primary-600 hover:shadow-lg hover:scale-110 transition-all duration-300"
+                  className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-110 transition-all duration-300"
                   aria-label="Send Email"
                 >
                   <Mail size={22} />
@@ -455,7 +532,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <Footer />
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }

@@ -48,6 +48,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -58,6 +59,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -69,6 +71,7 @@ body {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -76,18 +79,24 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
   }
@@ -97,6 +106,7 @@ body {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -124,13 +134,33 @@ body {
 }
 
 /* Stagger Animations */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
-.stagger-7 { animation-delay: 0.7s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+
+.stagger-7 {
+  animation-delay: 0.7s;
+}
 
 /* ========================================
    Button Styles
@@ -205,4 +235,93 @@ body {
    ======================================== */
 ::selection {
   @apply bg-primary-500/30 text-primary-900;
+}
+
+/* ========================================
+   Stitch Premium Theme & Glassmorphism
+   ======================================== */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --accent-cyan: #06b6d4;
+  --accent-purple: #8b5cf6;
+  --accent-pink: #ec4899;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --bg-color: #0a0a0f;
+  --text-color: #f3f4f6;
+  --glass-bg: rgba(20, 20, 30, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: rgba(0, 0, 0, 0.4);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  @apply transition-colors duration-300;
+}
+
+.dark-premium-bg {
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(6, 182, 212, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+}
+
+.glass-premium {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 var(--card-shadow);
+}
+
+.glass-premium-hover {
+  @apply transition-all duration-500;
+}
+
+.glass-premium-hover:hover {
+  background: rgba(30, 30, 45, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 48px 0 rgba(99, 102, 241, 0.2);
+}
+
+.text-gradient-premium {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400;
+  text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.glow-border-focus:focus-within {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+@keyframes gradient-border {
+  0% {
+    border-image-source: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
+  }
+
+  50% {
+    border-image-source: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+  }
+
+  100% {
+    border-image-source: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
+  }
+}
+
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
 }

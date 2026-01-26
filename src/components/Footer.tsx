@@ -1,7 +1,11 @@
 import React from 'react';
 import { Github, Mail, ExternalLink, Heart } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+    isDarkMode: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
     const currentYear = new Date().getFullYear();
 
     const navLinks = [
@@ -25,18 +29,23 @@ const Footer: React.FC = () => {
     };
 
     return (
-        <footer className="relative z-10 bg-gray-900 text-white overflow-hidden">
+        <footer className={`relative z-10 overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}>
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 via-transparent to-purple-900/20" />
+            <div className={`absolute inset-0 ${isDarkMode ? 'bg-gradient-to-br from-cyan-900/10 via-transparent to-purple-900/10' : 'bg-gradient-to-br from-cyan-100/30 via-transparent to-purple-100/30'}`} />
 
             <div className="relative max-w-6xl mx-auto px-4 py-12">
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     {/* Brand Section */}
-                    <div className="text-center md:text-left">
-                        <h3 className="text-2xl font-bold gradient-text mb-3">fernely.dev</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                            Crafting beautiful digital experiences with modern web technologies.
+                    <div className="text-center md:text-left flex flex-col items-center md:items-start gap-2">
+                        <div className="flex items-center gap-3">
+                            <img src="/img/logo.png" alt="Logo" className="h-10 w-auto opacity-80" />
+                            <h3 className={`text-2xl font-black tracking-tighter ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                                FERNELY<span className="text-cyan-500">DEV</span>
+                            </h3>
+                        </div>
+                        <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} text-xs uppercase tracking-widest font-bold opacity-60`}>
+                            Creative Digital Solutions
                         </p>
                     </div>
 

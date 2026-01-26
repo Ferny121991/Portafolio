@@ -17,12 +17,12 @@ export const TextGenerateEffect = ({
   useEffect(() => {
     // Mostrar palabras una por una con un pequeño retraso
     const timeouts: number[] = [];
-    
+
     wordsArray.forEach((_, index) => {
       const timeout = window.setTimeout(() => {
         setVisibleWords(prev => [...prev, index]);
       }, 100 * index); // 100ms de retraso entre palabras
-      
+
       timeouts.push(timeout);
     });
 
@@ -30,15 +30,14 @@ export const TextGenerateEffect = ({
   }, [words]);
 
   return (
-    <div className={cn("w-full max-w-3xl mx-auto text-gray-700 dark:text-gray-800", className)}>
+    <div className={cn("w-full max-w-3xl mx-auto text-gray-700 dark:text-gray-200", className)}>
       <div className="w-full">
         <div className="leading-relaxed tracking-wider">
           {wordsArray.map((word, idx) => (
-            <span 
+            <span
               key={`${word}-${idx}`}
-              className={`inline-block transition-all duration-300 ease-out ${
-                visibleWords.includes(idx) ? 'opacity-100' : 'opacity-0'
-              }`}
+              className={`inline-block transition-all duration-300 ease-out ${visibleWords.includes(idx) ? 'opacity-100' : 'opacity-0'
+                }`}
               style={{
                 filter: filter ? 'blur(8px)' : 'none',
                 color: 'inherit',

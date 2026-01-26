@@ -13,6 +13,7 @@ const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
 }) => {
     const [currentFrame, setCurrentFrame] = useState(0);
     const [imagesLoaded, setImagesLoaded] = useState(false);
+    const [heroOpacity, setHeroOpacity] = useState(1);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imagesRef = useRef<HTMLImageElement[]>([]);
 
@@ -57,7 +58,7 @@ const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
         loadImages();
     }, [totalFrames, startFrame]);
 
-    // Handle scroll to update frame
+    // Handle scroll to update frame AND opacity
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
@@ -68,6 +69,17 @@ const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
                 totalFrames - 1
             );
             setCurrentFrame(frameIndex);
+
+            // Fade out the hero background when scrolling past hero section
+            const heroHeight = window.innerHeight;
+            if (scrollTop > heroHeight * 0.5) {
+                const fadeStart = heroHeight * 0.5;
+                const fadeEnd = heroHeight;
+                const fadeProgress = Math.min((scrollTop - fadeStart) / (fadeEnd - fadeStart), 1);
+                setHeroOpacity(1 - fadeProgress);
+            } else {
+                setHeroOpacity(1);
+            }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -116,8 +128,14 @@ const ScrollAnimatedHero: React.FC<ScrollAnimatedHeroProps> = ({
         return () => window.removeEventListener('resize', handleResize);
     }, [imagesLoaded]);
 
+    // Don't render if completely faded out
+    if (heroOpacity <= 0) return null;
+
     return (
-        <div className="fixed inset-0 w-full h-screen z-0">
+        <div
+            className="fixed inset-0 w-full h-screen z-0 transition-opacity duration-300"
+            style={{ opacity: heroOpacity }}
+        >
             {/* Loading state */}
             {!imagesLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
