@@ -10,7 +10,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -55,7 +55,7 @@ function App() {
     { name: 'JavaScript', icon: FileJson, color: 'text-yellow-500', bg: 'bg-yellow-50' },
     { name: 'CSS', icon: Palette, color: 'text-blue-600', bg: 'bg-blue-50' },
     { name: 'React', icon: Atom, color: 'text-cyan-500', bg: 'bg-cyan-50' },
-    { name: 'Logo Design', icon: Image, color: 'text-purple-500', bg: 'bg-purple-50' },
+    { name: 'Flyer Design', icon: Image, color: 'text-purple-500', bg: 'bg-purple-50' },
     { name: 'AI / Prompt Engineering', icon: Brain, color: 'text-green-500', bg: 'bg-green-50' },
     { name: 'Video Editing', icon: Video, color: 'text-red-500', bg: 'bg-red-50' },
     { name: 'Social Media', icon: Share2, color: 'text-sky-500', bg: 'bg-sky-50' },
@@ -151,7 +151,7 @@ function App() {
                   FERNELY<span className="text-cyan-500">DEV</span>
                 </span>
                 <span className={`text-[7px] md:text-[9px] uppercase tracking-[0.2em] font-bold ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Creative Digital Solutions
+                  Flyers | Videos | Web Design
                 </span>
               </div>
             </button>
@@ -282,7 +282,7 @@ function App() {
                 <span className={`inline-block px-4 py-2 mb-6 text-xs font-bold tracking-wider rounded-full border uppercase ${isDarkMode
                   ? 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20'
                   : 'text-cyan-600 bg-cyan-500/10 border-cyan-500/20'}`}>
-                  ✨ Frontend Architect
+                  ✨ Graphic Designer & Video Marketing Expert
                 </span>
               </div>
 
@@ -292,8 +292,9 @@ function App() {
               </h1>
 
               <p className={`text-lg sm:text-xl md:text-2xl mb-8 animate-slide-up opacity-0 stagger-2 max-w-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                Crafting premium digital experiences through
-                <span className={`font-semibold ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`}> modern web technologies</span>
+                Creating <span className={`font-semibold ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`}>professional flyers</span>,
+                <span className={`font-semibold ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`}> marketing videos</span> and
+                <span className={`font-semibold ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`}>modern web development</span>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 animate-slide-up opacity-0 stagger-3">
@@ -386,7 +387,7 @@ function App() {
               <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Skills & Tools</h2>
               <div className="section-divider" />
               <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
-                Technologies and tools I use to bring ideas to life
+                Graphic design, video editing, web development and more tools to create premium digital solutions
               </p>
             </div>
           </ScrollReveal>
@@ -421,8 +422,7 @@ function App() {
               <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Featured Projects</h2>
               <div className="section-divider" />
               <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
-                A selection of my recent work including the premium
-                <span className="text-cyan-400 font-semibold"> FlujoEclesial Studio</span>
+                A selection of my recent work in web development, graphic design and creative digital solutions
               </p>
             </div>
           </ScrollReveal>
@@ -492,8 +492,8 @@ function App() {
               <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Let's Work Together</h2>
               <div className="section-divider" />
               <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
-                Have a project in mind? I'd love to hear about it.
-                Send me a message and let's create something amazing.
+                Need flyers, marketing videos or web development?
+                Contact me and let's create something amazing for your business.
               </p>
             </div>
           </ScrollReveal>
