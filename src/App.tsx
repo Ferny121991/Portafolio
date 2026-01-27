@@ -68,7 +68,7 @@ function App() {
     {
       title: 'FlujoEclesial Studio (Oasis Project)',
       description: 'A professional projector control center for churches, with real-time sync and content management.',
-      image: '/img/oasis.png',
+      image: '/img/projects/oasis.png',
       link: 'https://oasis-project.iglesiadeoasis.com/',
       tags: ['React', 'Supabase', 'Tailwind'],
     },
