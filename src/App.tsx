@@ -68,7 +68,7 @@ function App() {
     {
       title: 'FlujoEclesial Studio (Oasis Project)',
       description: 'A professional projector control center for churches, with real-time sync and content management.',
-      image: '/img/projects/oasis.png',
+      image: '/img/oasis.png',
       link: 'https://oasis-project.iglesiadeoasis.com/',
       tags: ['React', 'Supabase', 'Tailwind'],
     },
@@ -117,9 +117,9 @@ function App() {
     {
       title: 'Iglesia de Oasis',
       description: 'A spiritual community website featuring sermons, events, and resources',
-      image: '/img/iglesia.png',
+      image: '/img/projects/oasis.png',
       link: 'https://iglesiadeoasis.com/',
-      tags: ['React', 'Tailwind'],
+      tags: ['React', 'Tailwind', 'Vite'],
     },
   ];
 
@@ -316,7 +316,7 @@ function App() {
               {/* Quick Stats */}
               <div className="mt-16 grid grid-cols-3 gap-8 animate-fade-in opacity-0 stagger-4 max-w-md">
                 <div>
-                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>3+</div>
+                  <div className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>1+</div>
                   <div className={`text-[10px] uppercase tracking-widest font-bold ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>Years</div>
                 </div>
                 <div>
