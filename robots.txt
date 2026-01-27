@@ -1,0 +1,14 @@
+# robots.txt para Fernely Dev Portfolio
+# Optimizado para mejor indexación en motores de búsqueda
+
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+
+# Sitemap location
+Sitemap: https://fernelydev.com/sitemap.xml
+
+# Archivos prioritarios para crawlers
+# Servicios principales: Diseño de Flyers, Videos Marketing, Desarrollo Web

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Page - Diseño de Flyers & Videos Marketing -->
+  <url>
+    <loc>https://fernelydev.com/</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Sección Sobre Mí -->
+  <url>
+    <loc>https://fernelydev.com/#about</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sección Habilidades - Diseño Gráfico, Video Editing -->
+  <url>
+    <loc>https://fernelydev.com/#skills</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Sección Proyectos - Portfolio -->
+  <url>
+    <loc>https://fernelydev.com/#projects</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Sección Contacto - Servicios de Flyers y Videos -->
+  <url>
+    <loc>https://fernelydev.com/#contact</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Página de Precios -->
+  <url>
+    <loc>https://precios.fernelydev.com/</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>
