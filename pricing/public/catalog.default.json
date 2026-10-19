@@ -1,0 +1,207 @@
+{
+  "revision": 1,
+  "email": "fernelydev@gmail.com",
+  "phone": "+19394051291",
+  "plans": [
+    {
+      "id": "launch",
+      "price": 249,
+      "active": true,
+      "es": {
+        "name": "Lanza tu idea",
+        "tag": "Landing page",
+        "description": "Una oferta clara, una página y un objetivo: que te contacten.",
+        "features": [
+          "1 página con hasta 5 secciones",
+          "Diseño adaptable a móvil",
+          "Contacto por email y teléfono",
+          "SEO técnico básico",
+          "1 ronda de ajustes",
+          "Entrega estimada: 3–5 días laborables"
+        ]
+      },
+      "en": {
+        "name": "Launch your idea",
+        "tag": "Landing page",
+        "description": "One clear offer, one page and one goal: help customers contact you.",
+        "features": [
+          "1 page with up to 5 sections",
+          "Mobile-friendly design",
+          "Email and phone contact",
+          "Basic technical SEO",
+          "1 revision round",
+          "Estimated delivery: 3–5 business days"
+        ]
+      }
+    },
+    {
+      "id": "business",
+      "price": 499,
+      "active": true,
+      "es": {
+        "name": "Haz crecer tu negocio",
+        "tag": "Web de negocio",
+        "description": "Más espacio para explicar tus servicios y dar confianza a nuevos clientes.",
+        "features": [
+          "Hasta 5 páginas de contenido",
+          "Diseño adaptado a tu marca",
+          "Galería y enlaces a redes",
+          "SEO técnico y metadatos por página",
+          "2 rondas de ajustes",
+          "Entrega estimada: 7–10 días laborables"
+        ]
+      },
+      "en": {
+        "name": "Grow your business",
+        "tag": "Business website",
+        "description": "More room to explain your services and build trust with new customers.",
+        "features": [
+          "Up to 5 content pages",
+          "Design tailored to your brand",
+          "Gallery and social links",
+          "Technical SEO and page metadata",
+          "2 revision rounds",
+          "Estimated delivery: 7–10 business days"
+        ]
+      }
+    },
+    {
+      "id": "catalog",
+      "price": 899,
+      "active": true,
+      "es": {
+        "name": "Tu catálogo, bajo control",
+        "tag": "Catálogo + admin",
+        "description": "Muestra tus productos y actualízalos desde tu propio panel.",
+        "features": [
+          "Hasta 5 páginas y 20 productos iniciales",
+          "Panel para crear, editar y ocultar productos",
+          "1 cuenta de administrador",
+          "Solicitudes por email; sin cobros online",
+          "2 rondas de ajustes y guía de uso",
+          "Entrega estimada: 10–15 días laborables"
+        ]
+      },
+      "en": {
+        "name": "Your catalog, in control",
+        "tag": "Catalog + admin",
+        "description": "Show your products and update them from your own dashboard.",
+        "features": [
+          "Up to 5 pages and 20 initial products",
+          "Dashboard to add, edit and hide products",
+          "1 administrator account",
+          "Email inquiries; no online checkout",
+          "2 revision rounds and usage guide",
+          "Estimated delivery: 10–15 business days"
+        ]
+      }
+    }
+  ],
+  "extras": [
+    {
+      "id": "admin",
+      "price": 299,
+      "period": "once",
+      "active": true,
+      "includedIn": ["catalog"],
+      "es": {
+        "name": "Administración básica",
+        "description": "1 acceso y edición de contenido acordado. Para web existente compatible; permisos avanzados se cotizan."
+      },
+      "en": {
+        "name": "Basic administration",
+        "description": "1 login and editing for agreed content. For a compatible existing site; advanced permissions quoted separately."
+      }
+    },
+    {
+      "id": "bilingual",
+      "price": 149,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Versión bilingüe",
+        "description": "ES/EN para el contenido del paquete. Revisión de textos incluida; traducción técnica se cotiza."
+      },
+      "en": {
+        "name": "Bilingual version",
+        "description": "ES/EN for the package content, with copy review. Technical translation quoted separately."
+      }
+    },
+    {
+      "id": "page",
+      "price": 75,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Página adicional",
+        "description": "1 página informativa con estructura similar al sitio. Contenido suministrado por el cliente."
+      },
+      "en": {
+        "name": "Additional page",
+        "description": "1 content page matching the website structure. Client supplies the content."
+      }
+    },
+    {
+      "id": "logo",
+      "price": 129,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Logo esencial",
+        "description": "1 dirección visual, 2 rondas de ajustes y archivos PNG/SVG. Sin manual de marca ni registro de marca."
+      },
+      "en": {
+        "name": "Essential logo",
+        "description": "1 visual direction, 2 revision rounds and PNG/SVG files. Brand guidelines and trademark registration excluded."
+      }
+    },
+    {
+      "id": "flyer",
+      "price": 35,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Flyer para redes",
+        "description": "1 pieza, 1 formato y 1 ronda de ajustes. Textos y materiales suministrados."
+      },
+      "en": {
+        "name": "Social media flyer",
+        "description": "1 design, 1 format and 1 revision round. Client supplies copy and assets."
+      }
+    },
+    {
+      "id": "reel",
+      "price": 69,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Edición de reel",
+        "description": "Hasta 30 segundos finales, material del cliente, subtítulos y 1 revisión. Sin grabación ni generación compleja."
+      },
+      "en": {
+        "name": "Reel editing",
+        "description": "Up to 30 finished seconds, client footage, captions and 1 revision. Filming and complex generation excluded."
+      }
+    },
+    {
+      "id": "care",
+      "price": 39,
+      "period": "month",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Cuidado web opcional",
+        "description": "Hasta 30 minutos de cambios de contenido y revisión mensual. Sin nuevas funciones; sin permanencia."
+      },
+      "en": {
+        "name": "Optional website care",
+        "description": "Up to 30 minutes of content updates and a monthly review. New features excluded; no long-term commitment."
+      }
+    }
+  ]
+}
