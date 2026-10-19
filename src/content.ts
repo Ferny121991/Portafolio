@@ -66,7 +66,7 @@ export const content = {
         features: [
           "Diseño adaptable a móvil",
           "Servicios y contacto fáciles de encontrar",
-          "Desarrollo con React o HTML y CSS",
+          "Opciones en español e inglés",
         ],
       },
       {
@@ -217,7 +217,7 @@ export const content = {
     contactIntro:
       "Dime qué haces, qué necesitas y para cuándo. Con eso podemos empezar a definir una propuesta para tu negocio.",
     contactLanguages: "Atención en español e inglés",
-    prices: "Consultar página de precios",
+    prices: "Ver paquetes y precios",
     form: {
       title: "Empecemos por lo esencial",
       intro: "Prepara tu consulta y envíala desde tu aplicación de correo.",
@@ -287,7 +287,7 @@ export const content = {
         features: [
           "Mobile-friendly design",
           "Easy-to-find services and contact details",
-          "Built with React or HTML and CSS",
+          "Spanish and English options",
         ],
       },
       {
@@ -437,7 +437,7 @@ export const content = {
     contactIntro:
       "Tell me about your business, what you need and your timeline. That gives us a starting point for your proposal.",
     contactLanguages: "Service in English and Spanish",
-    prices: "Visit the pricing page",
+    prices: "See packages & pricing",
     form: {
       title: "Let’s start with the essentials",
       intro: "Prepare your inquiry and send it from your email app.",

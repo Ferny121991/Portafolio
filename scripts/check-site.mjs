@@ -8,7 +8,7 @@ for (const [path, lang, title] of [
 ]) {
   const html = await readFile(path, "utf8");
   assert.ok(
-    html.includes(`<html lang="${lang}">`),
+    html.includes(`<html lang="${lang}"`),
     `${lang}: document language`,
   );
   assert.ok(html.includes(title), `${lang}: pre-rendered content`);

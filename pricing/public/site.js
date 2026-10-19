@@ -1,5 +1,22 @@
 const lang = document.documentElement.lang;
 const en = lang === "en";
+const themeToggle = document.querySelector("#theme-toggle");
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  themeToggle.textContent = theme === "dark" ? "☀" : "☾";
+  themeToggle.setAttribute("aria-label", en
+    ? `Use ${theme === "dark" ? "light" : "dark"} mode`
+    : `Activar modo ${theme === "dark" ? "claro" : "oscuro"}`);
+}
+try {
+  const theme = localStorage.getItem("fernely-theme");
+  if (theme === "dark" || theme === "light") applyTheme(theme);
+} catch { /* Theme works even when storage is blocked. */ }
+themeToggle?.addEventListener("click", () => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(theme);
+  try { localStorage.setItem("fernely-theme", theme); } catch { /* Keep the current choice in this tab. */ }
+});
 const plan = document.querySelector("#plan");
 const choices = [...document.querySelectorAll(".extra-choice input")];
 const format = (value) => `US$${value.toLocaleString("en-US")}`;
@@ -27,6 +44,15 @@ function updateQuote() {
         ? "Included in this package"
         : "Incluido en este paquete"
       : descriptions.get(input.value);
+    const priceLabel = label.querySelector("[data-extra-price]");
+    priceLabel.textContent = included
+      ? (en ? "Included" : "Incluido")
+      : `${format(Number(input.dataset.price))}${input.dataset.period === "month" ? (en ? "/month" : "/mes") : ""}`;
+    if (included) {
+      const line = `${label.querySelector("b").textContent.trim()}: ${en ? "included" : "incluido"}`;
+      items.push(line);
+      summary.push(line);
+    }
     if (!input.checked) return;
     const price = Number(input.dataset.price);
     const name = label.querySelector("b").textContent;

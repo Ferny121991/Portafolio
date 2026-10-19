@@ -42,7 +42,7 @@ export function renderPage(template: string, language: Language) {
     },
   };
   return template
-    .replace('<html lang="es">', `<html lang="${language}">`)
+    .replace('<html lang="es"', `<html lang="${language}"`)
     .replace(/<title>.*?<\/title>/, `<title>${escape(t.seoTitle)}</title>`)
     .replace(
       /(<meta\s+name="description"\s+content=")[^"]*("\s*\/?>)/,

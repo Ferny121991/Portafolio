@@ -82,7 +82,7 @@ $data=catalog(); $csrf=$_SESSION['csrf']; $saved=$_SESSION['saved'] ?? false; un
 <button class="button" type="submit">Entrar al panel →</button>
 </form>
 <?php else:?>
-<p>Gestiona importes, disponibilidad y textos en español e inglés. Al guardar, se actualiza la página pública. El catálogo incluye ya la administración básica; esa regla no cambia al editar su nombre.</p>
+<p>Gestiona importes, disponibilidad y textos en español e inglés. Al guardar, se actualiza la página pública. Negocio y Catálogo incluyen el segundo idioma; Catálogo incluye administración básica. Estas reglas no cambian al editar sus nombres. Los límites de idiomas y las condiciones generales se mantienen en los archivos de contenido.</p>
 <?php if($saved):?>
 <p class="notice" role="status">Cambios guardados. La página pública ya usa la nueva versión.</p>
 <?php endif;?>

@@ -9,7 +9,7 @@ $extras=array_values(array_filter($catalog['extras'],fn($p)=>$p['active']));
 $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 ?>
 <!doctype html>
-<html lang="<?= $lang ?>">
+<html lang="<?= $lang ?>" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -27,6 +27,7 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 <meta property="og:url" content="<?=esc($url)?>">
 <link rel="icon" href="/logo.png">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/studio.css">
 <script src="/site.js" defer>
 </script>
 </head>
@@ -50,6 +51,7 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 <?php endforeach;?>
 </nav>
 <div class="nav-right">
+<button type="button" class="theme-toggle" id="theme-toggle" aria-label="<?=$lang==='es'?'Activar modo claro':'Use light mode'?>">☀</button>
 <a href="/" lang="es" aria-current="<?=$lang==='es'?'page':'false'?>">ES</a>
 <span>/</span>
 <a href="/?lang=en" lang="en" aria-current="<?=$lang==='en'?'page':'false'?>">EN</a>
@@ -76,7 +78,7 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 <div class="actions">
 <a class="button lime" href="#paquetes">
 <?=esc($t['cta'])?> ↗</a>
-<a class="hero-link" href="#cotizador">
+<a class="hero-link" href="#proyectos">
 <?=esc($t['second'])?> →</a>
 </div>
 <span class="hero-foot">USD · Español & English · <?=esc($t['once'])?>
@@ -175,6 +177,26 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 <?=esc($t['noPlans'])?>
 </p>
 <?php endif;?>
+<div class="included-block">
+<h3><?=esc($t['allTitle'])?></h3>
+<div class="value-grid">
+<?php foreach($t['allItems'] as [$title,$text]):?>
+<div><h4><?=esc($title)?></h4><p><?=esc($text)?></p></div>
+<?php endforeach;?>
+</div>
+<div class="language-note"><span aria-hidden="true">ES / EN</span><div><h3><?=esc($t['languageTitle'])?></h3><p><?=esc($t['languageText'])?></p></div></div>
+</div>
+</section>
+<section id="proyectos" class="proof-section section">
+<div class="wrap">
+<div class="heading"><div><p class="eyebrow"><?=esc($t['proofLabel'])?></p><h2><?=esc($t['proofTitle'])?></h2></div><p><?=esc($t['proofIntro'])?></p></div>
+<div class="proof-grid">
+<?php foreach([['garden.webp','https://greengardensjn.netlify.app/'],['spa.webp','https://spaferny.netlify.app/']] as $i=>[$image,$link]):?>
+<article><a href="<?=esc($link)?>" target="_blank" rel="noopener noreferrer"><img src="/projects/<?=esc($image)?>" alt="<?=esc($t['proofProjects'][$i][0])?>" width="1100" height="619" loading="lazy"><div><h3><?=esc($t['proofProjects'][$i][0])?> ↗</h3><p><?=esc($t['proofProjects'][$i][1])?></p><span><?=esc($t['proofLink'])?></span></div></a></article>
+<?php endforeach;?>
+</div>
+<a class="proof-all" href="https://fernelydev.com/<?=$lang==='en'?'en/':''?>#projects"><?=esc($t['proofAll'])?> →</a>
+</div>
 </section>
 <section id="comparativa" class="comparison section">
 <div class="wrap">
@@ -188,6 +210,7 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 </h2>
 </div>
 </div>
+<details class="compare-details"><summary><?=esc($t['scopeTitle'])?><span>+</span></summary>
 <div class="table-scroll" tabindex="0" role="region" aria-label="<?=esc($t['scopeTitle'])?>">
 <table>
 <thead>
@@ -242,6 +265,8 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 </tbody>
 </table>
 </div>
+</details>
+<div class="cost-note"><h3><?=esc($t['costTitle'])?></h3><p><?=esc($t['costText'])?></p></div>
 </div>
 </section>
 <section class="wrap ai-grid section">
@@ -287,6 +312,9 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 <?=$extra['period']==='month'?'/'.esc($t['month']):''?>
 </strong>
 </div>
+<?php $includedPlans=array_values(array_filter($plans,fn($plan)=>in_array($plan['id'],$extra['includedIn'],true))); if($includedPlans):?>
+<span class="included-tag"><?= $lang==='es'?'Incluido: ':'Included: ' ?><?=esc(implode(' · ',array_map(fn($plan)=>$plan[$lang]['tag'],$includedPlans)))?></span>
+<?php endif;?>
 <p>
 <?=esc($extra[$lang]['description'])?>
 </p>
@@ -331,7 +359,7 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 <?=esc($e[$lang]['description'])?>
 </small>
 </span>
-<strong>
+<strong data-extra-price>
 <?=money($e['price'])?>
 <?=$e['period']==='month'?'/'.esc($t['month']):''?>
 </strong>
@@ -377,6 +405,13 @@ $url='https://precios.fernelydev.com/'.($lang==='en'?'?lang=en':'');
 </p>
 </noscript>
 </aside>
+</section>
+<section class="wrap section process-section">
+<p class="eyebrow"><?= $lang==='es'?'ASÍ TRABAJAMOS':'HOW WE WORK' ?></p>
+<h2><?=esc($t['processTitle'])?></h2>
+<ol class="process-grid">
+<?php foreach($t['steps'] as $i=>[$title,$text]):?><li><span>0<?=$i+1?></span><h3><?=esc($title)?></h3><p><?=esc($text)?></p></li><?php endforeach;?>
+</ol>
 </section>
 <section id="preguntas" class="faq-section section">
 <div class="wrap faq-grid">

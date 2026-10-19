@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -11,12 +11,28 @@ import {
   Palette,
   Globe2,
   Github,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { content, type Language } from "./content";
 
 export default function App({ language = "es" }: { language?: Language }) {
   const t = content[language];
+  const pricingUrl = `https://precios.fernelydev.com/${language === "en" ? "?lang=en" : ""}`;
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState("dark");
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("fernely-theme");
+      if (saved === "light" || saved === "dark") setTheme(saved);
+    } catch { /* Private browsing can block storage. */ }
+  }, []);
+  useEffect(() => { document.documentElement.dataset.theme = theme; }, [theme]);
+  function toggleTheme() {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    try { localStorage.setItem("fernely-theme", next); } catch { /* Theme still works. */ }
+  }
   const [service, setService] = useState("");
   const [emailReady, setEmailReady] = useState(false);
   const [emailHref, setEmailHref] = useState("mailto:fernelydev@gmail.com");
@@ -54,6 +70,10 @@ export default function App({ language = "es" }: { language?: Language }) {
             ))}
           </nav>
           <div className="header-actions">
+            <button className="theme-toggle" type="button" onClick={toggleTheme}
+              aria-label={language === "es" ? `Activar modo ${theme === "dark" ? "claro" : "oscuro"}` : `Use ${theme === "dark" ? "light" : "dark"} mode`}>
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             <nav className="languages" aria-label={t.language}>
               <a
                 href="/"
@@ -73,8 +93,8 @@ export default function App({ language = "es" }: { language?: Language }) {
                 EN
               </a>
             </nav>
-            <a className="button button-small header-cta" href="#contact">
-              {t.quote}
+            <a className="button button-small header-cta" href={pricingUrl}>
+              {t.prices}
               <ArrowUpRight size={16} />
             </a>
             <button
@@ -118,8 +138,8 @@ export default function App({ language = "es" }: { language?: Language }) {
             </h1>
             <p className="hero-description">{t.description}</p>
             <div className="hero-actions">
-              <a className="button" href="#contact">
-                {t.heroCta}
+              <a className="button" href={pricingUrl}>
+                {t.prices}
                 <ArrowUpRight size={19} />
               </a>
               <a className="text-link" href="#projects">
@@ -137,6 +157,11 @@ export default function App({ language = "es" }: { language?: Language }) {
                 Español & English
               </span>
             </div>
+            <a className="founder-chip" href="#about">
+              <img src="/img/profile.jpg" width="40" height="40" alt="" />
+              <span><strong>{language === "es" ? "Soy Fernely." : "I'm Fernely."}</strong> {language === "es" ? "Diseñamos tu siguiente paso." : "Let's design your next step."}</span>
+              <ArrowUpRight size={16} />
+            </a>
           </div>
           <div className="hero-showcase">
             <div className="showcase-top">
@@ -388,7 +413,7 @@ export default function App({ language = "es" }: { language?: Language }) {
               </span>
               <a
                 className="price-link"
-                href="https://precios.fernelydev.com/"
+                href={pricingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >

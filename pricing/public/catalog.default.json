@@ -8,27 +8,27 @@
       "price": 249,
       "active": true,
       "es": {
-        "name": "Lanza tu idea",
+        "name": "Empieza con claridad",
         "tag": "Landing page",
-        "description": "Una oferta clara, una página y un objetivo: que te contacten.",
+        "description": "Para presentar un servicio, una promoción o una idea y facilitar el primer contacto.",
         "features": [
-          "1 página con hasta 5 secciones",
-          "Diseño adaptable a móvil",
-          "Contacto por email y teléfono",
-          "SEO técnico básico",
+          "1 página, hasta 5 secciones y 500 palabras",
+          "Un idioma: español o inglés",
+          "Diseño móvil, contacto y enlaces a redes",
+          "SEO técnico básico y publicación",
           "1 ronda de ajustes",
           "Entrega estimada: 3–5 días laborables"
         ]
       },
       "en": {
-        "name": "Launch your idea",
+        "name": "Start with clarity",
         "tag": "Landing page",
-        "description": "One clear offer, one page and one goal: help customers contact you.",
+        "description": "For one service, promotion or idea that needs a clear path to first contact.",
         "features": [
-          "1 page with up to 5 sections",
-          "Mobile-friendly design",
-          "Email and phone contact",
-          "Basic technical SEO",
+          "1 page, up to 5 sections and 500 words",
+          "One language: Spanish or English",
+          "Mobile design, contact and social links",
+          "Basic technical SEO and publishing",
           "1 revision round",
           "Estimated delivery: 3–5 business days"
         ]
@@ -39,28 +39,30 @@
       "price": 499,
       "active": true,
       "es": {
-        "name": "Haz crecer tu negocio",
+        "name": "Conecta en dos idiomas",
         "tag": "Web de negocio",
-        "description": "Más espacio para explicar tus servicios y dar confianza a nuevos clientes.",
+        "description": "Para negocios de servicios que atienden a clientes en español e inglés.",
         "features": [
           "Hasta 5 páginas de contenido",
-          "Diseño adaptado a tu marca",
-          "Galería y enlaces a redes",
-          "SEO técnico y metadatos por página",
-          "2 rondas de ajustes",
+          "Español + inglés incluidos",
+          "Hasta 1.500 palabras de texto original",
+          "Adaptación de textos y revisión contigo",
+          "Galería, contacto y SEO en ambos idiomas",
+          "2 rondas de ajustes y publicación",
           "Entrega estimada: 7–10 días laborables"
         ]
       },
       "en": {
-        "name": "Grow your business",
+        "name": "Connect in two languages",
         "tag": "Business website",
-        "description": "More room to explain your services and build trust with new customers.",
+        "description": "For service businesses working with Spanish- and English-speaking customers.",
         "features": [
           "Up to 5 content pages",
-          "Design tailored to your brand",
-          "Gallery and social links",
-          "Technical SEO and page metadata",
-          "2 revision rounds",
+          "Spanish + English included",
+          "Up to 1,500 source-language words",
+          "Copy adaptation reviewed with you",
+          "Gallery, contact and SEO in both languages",
+          "2 revision rounds and publishing",
           "Estimated delivery: 7–10 business days"
         ]
       }
@@ -70,28 +72,30 @@
       "price": 899,
       "active": true,
       "es": {
-        "name": "Tu catálogo, bajo control",
+        "name": "Gestiona tu catálogo",
         "tag": "Catálogo + admin",
-        "description": "Muestra tus productos y actualízalos desde tu propio panel.",
+        "description": "Para mostrar productos y cambiar su información sin pedir cada edición al desarrollador.",
         "features": [
           "Hasta 5 páginas y 20 productos iniciales",
+          "Español + inglés; hasta 1.500 palabras originales en total",
           "Panel para crear, editar y ocultar productos",
-          "1 cuenta de administrador",
-          "Solicitudes por email; sin cobros online",
-          "2 rondas de ajustes y guía de uso",
+          "1 administrador y guía de uso",
+          "Solicitudes por email; sin pagos ni inventario",
+          "2 rondas de ajustes, SEO básico y publicación",
           "Entrega estimada: 10–15 días laborables"
         ]
       },
       "en": {
-        "name": "Your catalog, in control",
+        "name": "Manage your catalog",
         "tag": "Catalog + admin",
-        "description": "Show your products and update them from your own dashboard.",
+        "description": "For showing products and updating their information without asking a developer for every edit.",
         "features": [
           "Up to 5 pages and 20 initial products",
+          "Spanish + English; up to 1,500 source words in total",
           "Dashboard to add, edit and hide products",
-          "1 administrator account",
-          "Email inquiries; no online checkout",
-          "2 revision rounds and usage guide",
+          "1 administrator and usage guide",
+          "Email inquiries; no checkout or inventory",
+          "2 revision rounds, basic SEO and publishing",
           "Estimated delivery: 10–15 business days"
         ]
       }
@@ -103,29 +107,34 @@
       "price": 299,
       "period": "once",
       "active": true,
-      "includedIn": ["catalog"],
+      "includedIn": [
+        "catalog"
+      ],
       "es": {
         "name": "Administración básica",
-        "description": "1 acceso y edición de contenido acordado. Para web existente compatible; permisos avanzados se cotizan."
+        "description": "Configuración de un CMS compatible: 1 usuario y un tipo de contenido acordado. Incluido en Catálogo. Migraciones, sistemas a medida y roles avanzados se cotizan."
       },
       "en": {
         "name": "Basic administration",
-        "description": "1 login and editing for agreed content. For a compatible existing site; advanced permissions quoted separately."
+        "description": "Setup of a compatible CMS: 1 user and one agreed content type. Included in Catalog. Migrations, custom systems and advanced roles quoted separately."
       }
     },
     {
       "id": "bilingual",
-      "price": 149,
+      "price": 99,
       "period": "once",
       "active": true,
-      "includedIn": [],
+      "includedIn": [
+        "business",
+        "catalog"
+      ],
       "es": {
-        "name": "Versión bilingüe",
-        "description": "ES/EN para el contenido del paquete. Revisión de textos incluida; traducción técnica se cotiza."
+        "name": "Segundo idioma ES/EN",
+        "description": "Para Landing: adaptación de hasta 500 palabras originales, selector, metadatos y revisión. Incluido en Negocio y Catálogo hasta 1.500 palabras originales; textos especializados aparte."
       },
       "en": {
-        "name": "Bilingual version",
-        "description": "ES/EN for the package content, with copy review. Technical translation quoted separately."
+        "name": "Second language ES/EN",
+        "description": "For Landing: adaptation of up to 500 source words, switcher, metadata and review. Included in Business and Catalog up to 1,500 source words; specialist copy quoted separately."
       }
     },
     {
@@ -136,11 +145,11 @@
       "includedIn": [],
       "es": {
         "name": "Página adicional",
-        "description": "1 página informativa con estructura similar al sitio. Contenido suministrado por el cliente."
+        "description": "1 página de estructura similar, hasta 300 palabras originales con materiales listos. ES/EN si el proyecto es bilingüe. Funciones nuevas se cotizan."
       },
       "en": {
         "name": "Additional page",
-        "description": "1 content page matching the website structure. Client supplies the content."
+        "description": "1 matching content page, up to 300 source words with ready assets. ES/EN if the project is bilingual. New functionality quoted separately."
       }
     },
     {

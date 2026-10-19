@@ -5,18 +5,26 @@ Aplicación PHP independiente para `precios.fernelydev.com`, dentro de `pricing/
 ## Qué incluye
 
 - Diseño coherente con el nuevo portafolio, español e inglés.
+- Estilo oscuro cian/violeta, modo claro opcional y preferencia guardada localmente. Animación breve que respeta movimiento reducido.
 - Paquetes propuestos: landing US$249, negocio US$499 y catálogo con administración US$899.
 - Extras con alcance: administración, idioma adicional, página, logo, flyer, reel y cuidado mensual.
-- Cotizador que separa cargos iniciales y mensuales; el admin incluido en catálogo nunca se cobra dos veces.
+- Negocio y Catálogo incluyen ES/EN hasta 1.500 palabras originales en total. Landing: un idioma y extra ES/EN de US$99 hasta 500 palabras originales.
+- Cotizador que separa cargos iniciales y mensuales; ni el admin del Catálogo ni los idiomas incluidos se cobran dos veces.
 - Consulta por correo preparado. El visitante debe enviarlo desde su aplicación; no existe checkout ni cobro automático.
 - Panel `/admin/` para editar precios enteros en USD, textos ES/EN, características, visibilidad y contacto. Los servicios base tienen IDs fijos; crear categorías o roles nuevos requiere ampliar el código.
 - Persistencia en JSON fuera de la raíz pública. No requiere MySQL ni servicios externos.
+
+Las reglas `includedIn` se mantienen en `catalog.default.json`; el editor no las cambia al renombrar un plan. Las condiciones generales (idiomas, límites, publicación y corrección de errores durante 14 días) están en `public/marketing.php`. Si cambias el alcance desde el panel, mantén coherentes esas condiciones. Las imágenes de `public/projects/` proceden del portafolio propio y no implican que todos los paquetes incluyan esas funciones.
+
+Esta entrega todavía no se ha instalado en producción. Si ya existe un `catalog.json` privado de una instalación anterior, conservará sus precios y reglas: respáldalo y migra conscientemente las inclusiones y textos antes de publicar; reemplazar solo el catálogo predeterminado no sobrescribe datos privados.
 
 ## Requisitos
 
 PHP 8.2 o superior, HTTPS, sesiones habilitadas y una carpeta privada escribible. Hostinger compartido con PHP puede ejecutar esta aplicación. No es una página estática: **no usar el deploy estático de Hostinger ni abrir index.php directamente en el navegador local**.
 
 ## Publicar en el subdominio existente
+
+Verificado mediante el conector de Hostinger el 19 de octubre de 2026: `precios.fernelydev.com` es un subdominio de `fernelydev.com` y su raíz es la subcarpeta `public_html/precios` del dominio principal. Al actualizar el dominio principal, **conserva esa carpeta y respalda ambos sitios**. Un despliegue que reemplace toda la raíz podría eliminar el subdominio. La carpeta privada del panel debe quedar fuera de `public_html`, no junto a `index.php` ni dentro del repositorio.
 
 1. Respalda los archivos actuales del subdominio. Anota su raíz pública real en hPanel.
 2. Crea una carpeta `fernely-pricing-private` fuera de TODAS las raíces públicas, incluida la del dominio principal. No la pongas dentro de `public_html`.

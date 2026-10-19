@@ -1,5 +1,5 @@
 <?php
-return [
+$copy = [
  'es'=>[
  'title'=>'Precios de páginas web y servicios creativos | Fernely Dev','description'=>'Paquetes web desde US$249, catálogo con administrador y extras de diseño y video. Compara alcances y prepara tu cotización con Fernely Dev.',
  'nav'=>['Paquetes','Qué incluye','Cotizador','Preguntas'],'skip'=>'Saltar al contenido','back'=>'Ver portafolio','eyebrow'=>'Una inversión clara. Una web con propósito.','headline'=>'Elige el siguiente paso','accent'=>'para tu negocio.','intro'=>'Desde tu primera página hasta un catálogo que tú puedes actualizar. Alcances claros, trato directo y una propuesta antes de comenzar.','cta'=>'Encuentra tu paquete','second'=>'Arma tu cotización','from'=>'Desde','once'=>'pago único','recommended'=>'Mi recomendación para empezar a crecer','choose'=>'Elegir este paquete','plansLabel'=>'01 / ELIGE TU PUNTO DE PARTIDA','plansTitle'=>'Tres formas de hacerte presente.','plansIntro'=>'El precio final se confirma al revisar tus materiales y el alcance. Todos los importes están en dólares estadounidenses (USD).','trust'=>['Diseño adaptable a móvil','SEO técnico básico incluido','Revisiones con alcance definido','Contacto directo con Fernely'],
@@ -35,3 +35,6 @@ return [
  'contactTitle'=>'Not sure which package fits?','contactText'=>'Tell me about your business and what you need. We’ll define the right scope together.','email'=>'Send an email','call'=>'Call','footer'=>'Thoughtful design, video and development.','admin'=>'Administration',
  ]
 ];
+
+foreach (require __DIR__.'/marketing.php' as $language => $changes) { $copy[$language] = array_replace($copy[$language], $changes); }
+return $copy;

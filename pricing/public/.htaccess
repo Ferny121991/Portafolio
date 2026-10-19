@@ -1,5 +1,5 @@
 Options -Indexes
 DirectoryIndex index.php
-<FilesMatch "^(app\.php|lang\.php)$">
+<FilesMatch "^(app\.php|lang\.php|marketing\.php)$">
   Require all denied
 </FilesMatch>
