@@ -1,5 +1,15 @@
 # Precios y administración — Fernely Dev
 
+## Proyectos del portafolio
+
+El mismo acceso de `/admin/` permite entrar en `/admin/projects.php`. Desde allí se pueden crear, editar, ordenar, ocultar y enviar a la papelera proyectos con nombre, descripción, categoría y texto alternativo en ES/EN, enlace HTTPS e imagen. Al restaurar, el proyecto queda oculto. Los números de orden menores aparecen primero; el primer proyecto visible se muestra también en la portada.
+
+Las imágenes JPG/PNG/WebP de hasta 3 MB y 12 megapíxeles se decodifican y convierten a WebP (máximo 1600 px) con GD. No se acepta SVG. El catálogo de proyectos, sus imágenes y la copia anterior se guardan en la misma carpeta privada del administrador, fuera del repositorio y de todas las raíces públicas. Ocultar no convierte una imagen conocida en un archivo confidencial. La papelera cuenta dentro del límite de 100 proyectos y conserva las imágenes para restaurarlos.
+
+La web principal necesita los endpoints PHP `public/api/projects.php` y `public/api/project-image.php`, que acceden a `public_html/precios/`. El navegador consulta los proyectos actuales al cargar: añadir o modificar proyectos no requiere recompilar React. La sección muestra estados de carga, error con reintento y listado vacío; el contenido comercial sigue prerenderizado, pero los proyectos requieren JavaScript. `projects.default.json` mantiene los ocho proyectos originales para la primera instalación y nunca reemplaza un `projects.json` privado existente.
+
+Publicar ambos sitios juntos y conservar la ruta privada instalada en `precios/app.php`. No desplegar únicamente la web React si se eliminan las carpetas existentes. Las credenciales actuales se conservan. Prueba integral: `python pricing/tests/projects.py`, con `FERNELY_TEST_PHP` y opcionalmente `FERNELY_TEST_GD_DIR` para el runtime de pruebas; usa carpetas temporales y dos servidores locales.
+
 Aplicación PHP independiente para `precios.fernelydev.com`, dentro de `pricing/`. No modifica la aplicación React del dominio principal. La versión pública anterior se revisó directamente; no se encontró un proyecto de precios separado en los repositorios accesibles.
 
 ## Qué incluye

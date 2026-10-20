@@ -67,3 +67,4 @@ html[data-theme="dark"] { color-scheme: dark; --ink: #f1f4fc; --muted: #b1bdd2; 
  .service, .service + .service { border: 1px solid var(--line); }
 }
 @media(prefers-reduced-motion:reduce) { .hero-copy,.hero-showcase { animation: none; } .hero-showcase,.service { transition: none; } }
+.extra-projects .extra-project-image{width:100px;height:66px;object-fit:cover;border-radius:10px;flex-shrink:0}.extra-projects a>span:first-of-type{flex:1}@media(max-width:480px){.extra-projects .extra-project-image{width:68px;height:52px}}

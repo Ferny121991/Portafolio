@@ -1,0 +1,165 @@
+{
+  "revision": 1,
+  "projects": [
+    {
+      "id": "project1",
+      "order": 10,
+      "active": true,
+      "deleted": false,
+      "link": "https://oasis-project.iglesiadeoasis.com/",
+      "image": "/img/optimized/oasis.webp",
+      "es": {
+        "title": "FlujoEclesial Studio",
+        "description": "Centro de control para proyección en iglesias, con sincronización y gestión de contenido.",
+        "category": "Aplicación web / Iglesias",
+        "alt": "Panel de control de FlujoEclesial Studio"
+      },
+      "en": {
+        "title": "FlujoEclesial Studio",
+        "description": "A church projection control center with synchronization and content management.",
+        "category": "Web application / Churches",
+        "alt": "FlujoEclesial Studio control panel"
+      }
+    },
+    {
+      "id": "project2",
+      "order": 20,
+      "active": true,
+      "deleted": false,
+      "link": "https://greengardensjn.netlify.app/",
+      "image": "/img/optimized/garden.webp",
+      "es": {
+        "title": "Green Gardens",
+        "description": "Una presentación visual de servicios de jardinería, con una identidad inspirada en la naturaleza.",
+        "category": "Diseño web / Servicios",
+        "alt": "Sitio web de jardinería Green Gardens"
+      },
+      "en": {
+        "title": "Green Gardens",
+        "description": "A visual introduction to gardening services with a nature-inspired identity.",
+        "category": "Website design / Services",
+        "alt": "Green Gardens gardening website"
+      }
+    },
+    {
+      "id": "project3",
+      "order": 30,
+      "active": true,
+      "deleted": false,
+      "link": "https://spaferny.netlify.app/",
+      "image": "/img/optimized/spa.webp",
+      "es": {
+        "title": "Spa & Masajes Ferny",
+        "description": "Una experiencia web que presenta servicios y tratamientos con una estética cálida y relajante.",
+        "category": "Diseño web / Bienestar",
+        "alt": "Página de servicios del spa Ferny"
+      },
+      "en": {
+        "title": "Spa & Masajes Ferny",
+        "description": "A web experience that presents services and treatments with a warm, relaxing feel.",
+        "category": "Website design / Wellness",
+        "alt": "Ferny spa services website"
+      }
+    },
+    {
+      "id": "project4",
+      "order": 40,
+      "active": true,
+      "deleted": false,
+      "link": "https://iglesiadeoasis.com/",
+      "image": "/img/optimized/church.webp",
+      "es": {
+        "title": "Iglesia de Oasis",
+        "description": "Un punto de encuentro digital para compartir mensajes, eventos y recursos de la comunidad.",
+        "category": "Diseño web / Comunidad",
+        "alt": "Página principal de Iglesia de Oasis"
+      },
+      "en": {
+        "title": "Iglesia de Oasis",
+        "description": "A digital gathering place for community messages, events and resources.",
+        "category": "Website design / Community",
+        "alt": "Iglesia de Oasis homepage"
+      }
+    },
+    {
+      "id": "project5",
+      "order": 50,
+      "active": true,
+      "deleted": false,
+      "link": "https://gridedit.netlify.app/",
+      "image": "/img/logo_icon.png",
+      "es": {
+        "title": "Visual CSS Grid Editor Pro",
+        "description": "Editor visual para construir distribuciones con CSS Grid.",
+        "category": "Proyecto web",
+        "alt": "Visual CSS Grid Editor Pro"
+      },
+      "en": {
+        "title": "Visual CSS Grid Editor Pro",
+        "description": "A visual tool for building CSS Grid layouts.",
+        "category": "Web project",
+        "alt": "Visual CSS Grid Editor Pro"
+      }
+    },
+    {
+      "id": "project6",
+      "order": 60,
+      "active": true,
+      "deleted": false,
+      "link": "https://nota-compra.netlify.app/",
+      "image": "/img/logo_icon.png",
+      "es": {
+        "title": "Lista de compras",
+        "description": "Una herramienta para organizar compras y sus gastos.",
+        "category": "Proyecto web",
+        "alt": "Lista de compras"
+      },
+      "en": {
+        "title": "Shopping List",
+        "description": "A tool for organizing shopping lists and expenses.",
+        "category": "Web project",
+        "alt": "Shopping List"
+      }
+    },
+    {
+      "id": "project7",
+      "order": 70,
+      "active": true,
+      "deleted": false,
+      "link": "https://analis-gastos.netlify.app/",
+      "image": "/img/logo_icon.png",
+      "es": {
+        "title": "Control financiero personal",
+        "description": "Organización de gastos y presupuestos personales.",
+        "category": "Proyecto web",
+        "alt": "Control financiero personal"
+      },
+      "en": {
+        "title": "Personal Financial Control",
+        "description": "A tool for tracking personal expenses and budgets.",
+        "category": "Web project",
+        "alt": "Personal Financial Control"
+      }
+    },
+    {
+      "id": "project8",
+      "order": 80,
+      "active": true,
+      "deleted": false,
+      "link": "https://blogcafefer.netlify.app/",
+      "image": "/img/logo_icon.png",
+      "es": {
+        "title": "Blog de Café",
+        "description": "Artículos y contenido sobre café en un diseño cálido.",
+        "category": "Proyecto web",
+        "alt": "Blog de Café"
+      },
+      "en": {
+        "title": "Coffee Blog",
+        "description": "Coffee articles and content with a warm visual design.",
+        "category": "Web project",
+        "alt": "Coffee Blog"
+      }
+    }
+  ]
+}

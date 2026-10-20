@@ -46,6 +46,7 @@ $data=catalog(); $csrf=$_SESSION['csrf']; $saved=$_SESSION['saved'] ?? false; un
 <a class="brand" href="/">FERNELY<b>DEV</b>
 </a>
 <a href="/">Ver precios publicados ↗</a>
+<a href="/admin/projects.php">Gestionar proyectos →</a>
 <?php if(!empty($_SESSION['authenticated'])):?>
 <form method="post">
 <input type="hidden" name="csrf" value="<?=esc($csrf)?>">

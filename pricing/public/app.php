@@ -28,7 +28,7 @@ function headers_public(): void {
     header('Content-Type: text/html; charset=utf-8');
     header('X-Content-Type-Options: nosniff');
     header('Referrer-Policy: strict-origin-when-cross-origin');
-    header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'");
+    header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://fernelydev.com data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'");
     header('Cache-Control: no-cache');
 }
 function start_admin_session(): void {

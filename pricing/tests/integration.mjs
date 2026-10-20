@@ -117,8 +117,8 @@ try {
     en = await request("/?lang=en");
   assert.equal(es.status, 200);
   assert.equal(en.status, 200);
-  assert.ok(es.html.includes('<html lang="es">'));
-  assert.ok(en.html.includes('<html lang="en">'));
+  assert.ok(es.html.includes('<html lang="es"'));
+  assert.ok(en.html.includes('<html lang="en"'));
   assert.ok(es.html.includes("US$249") && es.html.includes("US$899"));
   assert.ok(
     !es.html.includes("password_hash") && !en.html.includes("test-owner"),

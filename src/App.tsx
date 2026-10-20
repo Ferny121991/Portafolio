@@ -16,11 +16,29 @@ import {
 } from "lucide-react";
 import { content, type Language } from "./content";
 
+type PortfolioProject = { id: string; title: string; description: string; category: string; alt: string; image: string; link: string };
+
 export default function App({ language = "es" }: { language?: Language }) {
   const t = content[language];
   const pricingUrl = `https://precios.fernelydev.com/${language === "en" ? "?lang=en" : ""}`;
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
+  const [projects, setProjects] = useState<PortfolioProject[]>([]);
+  const [projectStatus, setProjectStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [projectRetry, setProjectRetry] = useState(0);
+  useEffect(() => {
+    const controller = new AbortController();
+    setProjectStatus('loading');
+    fetch(`/api/projects.php?lang=${language}`, { signal: controller.signal, cache: 'no-store' })
+      .then(async response => {
+        if (!response.ok) throw new Error('Portfolio unavailable');
+        const data = await response.json();
+        if (!Array.isArray(data.projects)) throw new Error('Invalid portfolio');
+        setProjects(data.projects); setProjectStatus('ready');
+      })
+      .catch(() => { if (!controller.signal.aborted) setProjectStatus('error'); });
+    return () => controller.abort();
+  }, [language, projectRetry]);
   useEffect(() => {
     try {
       const saved = localStorage.getItem("fernely-theme");
@@ -179,18 +197,18 @@ export default function App({ language = "es" }: { language?: Language }) {
               aria-label={t.seeWork}
             >
               <img
-                src="/img/optimized/oasis.webp"
+                src={projects[0]?.image || '/img/profile.jpg'}
                 width="1100"
                 height="619"
-                alt={t.heroImage}
+                alt={projects[0]?.alt || 'Fernely Dev'}
               />
             </a>
             <div className="showcase-caption">
               <span>
-                <small>{t.selectedProject}</small>
-                <strong>FlujoEclesial Studio</strong>
+                <small>{projects[0]?.category || t.workLabel}</small>
+                <strong>{projects[0]?.title || 'Fernely Dev'}</strong>
               </span>
-              <span className="project-number">01 / 08</span>
+              <span className="project-number">{projects.length ? `01 / ${String(projects.length).padStart(2, '0')}` : '✳'}</span>
             </div>
             <div className="showcase-sticker">
               <Code2 size={25} />
@@ -264,9 +282,13 @@ export default function App({ language = "es" }: { language?: Language }) {
               </div>
               <p>{t.workIntro}</p>
             </div>
+            {projectStatus === 'loading' && <p role="status">{language === 'es' ? 'Cargando proyectos…' : 'Loading projects…'}</p>}
+            {projectStatus === 'error' && <p role="status">{language === 'es' ? 'No se pudieron cargar los proyectos.' : 'Projects could not be loaded.'} <button className="text-link" onClick={() => setProjectRetry(n => n + 1)}>{language === 'es' ? 'Reintentar' : 'Try again'}</button></p>}
+            {projectStatus === 'ready' && projects.length === 0 && <p>{language === 'es' ? 'Próximamente compartiré nuevos trabajos. Hablemos de tu proyecto.' : 'New work will be shared here soon. Let’s discuss your project.'}</p>}
+            <noscript><p>{language === 'es' ? 'Activa JavaScript para consultar los proyectos actualizados.' : 'Enable JavaScript to see the latest projects.'}</p></noscript>
             <div className="work-grid">
-              {t.projects.slice(0, 4).map((project, i) => (
-                <article className="work-card" key={project.title}>
+              {projects.slice(0, 4).map((project, i) => (
+                <article className="work-card" key={project.id}>
                   <a
                     href={project.link}
                     target="_blank"
@@ -296,19 +318,20 @@ export default function App({ language = "es" }: { language?: Language }) {
                 </article>
               ))}
             </div>
-            <details className="more-projects">
+            {projects.length > 4 && <details className="more-projects">
               <summary>
                 {t.moreWork}
                 <span aria-hidden="true">+</span>
               </summary>
               <div className="extra-projects">
-                {t.projects.slice(4).map((project) => (
+                {projects.slice(4).map((project) => (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    key={project.title}
+                    key={project.id}
                   >
+                    <img className="extra-project-image" src={project.image} alt={project.alt} loading="lazy" width="120" height="75" />
                     <span>
                       <strong>{project.title}</strong>
                       <small>{project.description}</small>
@@ -318,7 +341,7 @@ export default function App({ language = "es" }: { language?: Language }) {
                   </a>
                 ))}
               </div>
-            </details>
+            </details>}
             <div className="work-cta">
               <p>{t.workCta}</p>
               <a href="#contact" className="text-link">
