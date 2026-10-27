@@ -5,8 +5,9 @@ function leads_read(): array {
     ensure_private();
     $file=private_dir().'/leads.json';
     if (!is_file($file)) return ['leads'=>[]];
-    $data=json_decode((string)file_get_contents($file),true);
-    return is_array($data)&&is_array($data['leads']??null)?$data:['leads'=>[]];
+    $data=json_decode((string)file_get_contents($file),true,512,JSON_THROW_ON_ERROR);
+    if(!is_array($data)||!is_array($data['leads']??null)) throw new RuntimeException('Inquiry storage is invalid.');
+    return $data;
 }
 function leads_save(array $data): void {
     $temp=tempnam(private_dir(),'leads-');
@@ -46,8 +47,6 @@ function save_lead(array $input): void {
     if(!$lock||!flock($lock,LOCK_EX)) throw new RuntimeException('Inquiry storage unavailable.');
     try {
         $data=leads_read();
-        $cutoff=time()-90*86400;
-        $data['leads']=array_values(array_filter($data['leads'],static fn($lead)=>strtotime($lead['createdAt']??'')>=$cutoff));
         $data['leads'][]=['id'=>bin2hex(random_bytes(12)),'name'=>$input['name'],'email'=>$input['email'],'phone'=>$input['phone'],'service'=>$input['service'],'message'=>$input['message'],'language'=>$input['language'],'campaign'=>$input['campaign'],'status'=>'new','createdAt'=>gmdate('c')];
         leads_save($data);
     } finally { flock($lock,LOCK_UN); fclose($lock); }

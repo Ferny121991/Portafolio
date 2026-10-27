@@ -71,7 +71,7 @@ export default function App({ language = "es" }: { language?: Language }) {
           language, campaign: new URLSearchParams(window.location.search).get('utm_campaign') || '',
         }),
       });
-      if (!response.ok) throw new Error('Inquiry could not be sent');
+      if (!response.ok || (await response.json()).ok !== true) throw new Error('Inquiry could not be sent');
       setInquiryState('success'); form.reset(); setService('');
     } catch {
       setInquiryState('error');
