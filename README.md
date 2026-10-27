@@ -24,18 +24,20 @@ La compilación genera los recursos del navegador, compila una entrada de React 
 
 ## Publicar en el hosting existente
 
-Sube **el contenido de `dist/`** a la raíz pública de fernelydev.com, conservando `en/`, `assets/`, `img/`, `robots.txt` y `sitemap.xml`. La configuración usa rutas desde la raíz del dominio. El servidor debe servir `en/index.html` al solicitar `/en/`; esto funciona con los directorios normales de Hostinger/Apache. No subas el repositorio completo ni `.prerender/`.
+Publica el contenido de `dist/` en la raíz pública de fernelydev.com e incluye `pricing/public/` dentro de `precios/`: el subdominio comparte ese directorio con la web principal. Conserva la ruta privada del administrador en la copia de producción de `app.php`. Sigue [las instrucciones de Hostinger](docs/HOSTINGER.md) para preparar el paquete conjunto. No subas el repositorio completo ni `.prerender/`.
 
 Si el hosting ya tiene una regla general que redirige a `index.html`, asegúrate de que respete los archivos y directorios existentes. Comprueba `/` y `/en/` con una carga directa después de subirlos.
 
 ## Contacto
 
-La consulta pide nombre, servicio y descripción. Abre la aplicación de correo del visitante con un mensaje preparado para `fernelydev@gmail.com`. El visitante debe revisarlo y enviarlo allí. La interfaz explica este paso y nunca afirma que el mensaje ya fue enviado. No se guardan datos en el sitio ni se requiere un proveedor externo.
+El formulario pide nombre, correo, servicio y descripción; el teléfono es opcional. Envía JSON a `https://precios.fernelydev.com/api/enviar.php` y confirma recepción solo cuando el servidor responde con `ok: true`. El endpoint valida campos y consentimiento, limita solicitudes, utiliza un campo trampa contra spam y acepta únicamente los orígenes públicos autorizados.
 
-El archivo PHP heredado `public/api/enviar.php` se conserva para no interrumpir integraciones existentes, pero esta interfaz no lo llama. El formulario depende de que el visitante tenga una aplicación de correo; el email directo siempre está visible como alternativa. No se ha verificado entrega real de correo ni se ha añadido WhatsApp sin confirmar el número comercial.
+Las consultas se guardan fuera de las raíces públicas, junto a los datos privados del administrador. En `https://precios.fernelydev.com/admin/leads.php` se pueden leer, responder por correo y marcar como nuevas, respondidas o cerradas. No se envían notificaciones automáticas por email. El correo directo permanece visible como alternativa y la información de privacidad está en `/privacy.html` y `/en/privacy.html`.
+
+El administrador también permite gestionar proyectos en `/admin/projects.php` y paquetes en `/admin/`. Los proyectos públicos se cargan desde el API del portafolio para reflejar sus cambios.
 
 ## Rendimiento y contenido
 
 La portada muestra un proyecto real y ya no monta la animación de 171 fotogramas. Las capturas optimizadas están en `public/img/optimized/`; los originales se conservan. Las imágenes de proyectos fuera de la portada se cargan de forma diferida. No se publican cifras de satisfacción ni testimonios sin evidencia.
 
-La web prepara una mejor experiencia para consultas. El cambio en clientes y ventas debe medirse con tráfico y consultas reales después de publicar; no se ha instalado analítica ni seguimiento de visitantes.
+La web prepara una mejor experiencia para consultas. El cambio en clientes y ventas debe medirse con consultas reales después de publicar. No hay analítica de terceros; si la visita incluye `utm_campaign`, ese nombre puede guardarse con la consulta para conocer su campaña de origen.
