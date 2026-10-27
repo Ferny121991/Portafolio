@@ -1,62 +1,43 @@
-# Portfolio Website with PHP Contact Form
+# Fernely Dev — sitio bilingüe
 
-This portfolio website is built with React, TypeScript, and Vite, featuring a PHP-powered contact form.
+Sitio de servicios y portafolio con React, TypeScript y Vite. Español en `/` e inglés en `/en/`. Conserva los ocho proyectos del portafolio y los enlaces de contacto y precios existentes.
 
-## Setup Instructions
+## Desarrollo
 
-### 1. Running the React Application
-
-To start the React development server:
-
-```bash
+```sh
+npm ci
 npm run dev
 ```
 
-This will start the Vite development server, typically on http://localhost:5173.
+Abre `/` o `/en/` en el servidor de Vite para trabajar en cada idioma. Los textos de ambos idiomas están en `src/content.ts`; el diseño está en `src/index.css`.
 
-### 2. Setting Up the PHP Server
+## Compilar y verificar
 
-For the contact form to work, you need to run a PHP server alongside your React application. You can use PHP's built-in server:
-
-```bash
-cd public
-php -S localhost:8000
+```sh
+npm run build
+npm run check:site
+npx tsc --noEmit -p tsconfig.app.json
+npm run preview
 ```
 
-This will start a PHP server on port 8000, which will handle your contact form submissions.
+La compilación genera los recursos del navegador, compila una entrada de React para Node y produce HTML completo en `dist/index.html` y `dist/en/index.html`. No requiere un servidor Node en producción. Los metadatos, canonical, hreflang y datos estructurados se generan por idioma. `check:site` comprueba el contenido publicado, las referencias a recursos y los enlaces internos.
 
-### 3. How the Contact Form Works
+## Publicar en el hosting existente
 
-The contact form in your portfolio site:
+Publica el contenido de `dist/` en la raíz pública de fernelydev.com e incluye `pricing/public/` dentro de `precios/`: el subdominio comparte ese directorio con la web principal. Conserva la ruta privada del administrador en la copia de producción de `app.php`. Sigue [las instrucciones de Hostinger](docs/HOSTINGER.md) para preparar el paquete conjunto. No subas el repositorio completo ni `.prerender/`.
 
-1. Collects user input (name, email, message)
-2. Sends data to the PHP backend (`/api/enviar.php`)
-3. PHP processes the form data and sends an email
-4. Returns success/error messages to the frontend
+Si el hosting ya tiene una regla general que redirige a `index.html`, asegúrate de que respete los archivos y directorios existentes. Comprueba `/` y `/en/` con una carga directa después de subirlos.
 
-### 4. Configuration
+## Contacto
 
-- **Email Recipient**: Edit the `$destinatario` variable in `public/api/enviar.php` to change where form submissions are sent.
-- **Email Subject**: Modify the `$asunto` variable to customize the email subject line.
+El formulario pide nombre, correo, servicio y descripción; el teléfono es opcional. Envía JSON a `https://precios.fernelydev.com/api/enviar.php` y confirma recepción solo cuando el servidor responde con `ok: true`. El endpoint valida campos y consentimiento, limita solicitudes, utiliza un campo trampa contra spam y acepta únicamente los orígenes públicos autorizados.
 
-### 5. Production Deployment
+Las consultas se guardan fuera de las raíces públicas, junto a los datos privados del administrador. En `https://precios.fernelydev.com/admin/leads.php` se pueden leer, responder por correo y marcar como nuevas, respondidas o cerradas. No se envían notificaciones automáticas por email. El correo directo permanece visible como alternativa y la información de privacidad está en `/privacy.html` y `/en/privacy.html`.
 
-When deploying to production:
+El administrador también permite gestionar proyectos en `/admin/projects.php` y paquetes en `/admin/`. Los proyectos públicos se cargan desde el API del portafolio para reflejar sus cambios.
 
-1. Build your React app: `npm run build`
-2. Upload the contents of the `dist` folder to your web server
-3. Make sure to copy the `public/api` folder to your server
-4. Configure your server to handle PHP files
+## Rendimiento y contenido
 
-## Technologies Used
+La portada muestra un proyecto real y ya no monta la animación de 171 fotogramas. Las capturas optimizadas están en `public/img/optimized/`; los originales se conservan. Las imágenes de proyectos fuera de la portada se cargan de forma diferida. No se publican cifras de satisfacción ni testimonios sin evidencia.
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- PHP (for form processing)
-
-## Notes
-
-- The contact form is configured to work with the PHP `mail()` function, which requires a properly configured mail server.
-- For local development, you may need to configure a local mail server or use a service like Mailtrap for testing.
+La web prepara una mejor experiencia para consultas. El cambio en clientes y ventas debe medirse con consultas reales después de publicar. No hay analítica de terceros; si la visita incluye `utm_campaign`, ese nombre puede guardarse con la consulta para conocer su campaña de origen.

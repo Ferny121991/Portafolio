@@ -1,0 +1,70 @@
+/* Fernely's cyan / violet identity, with an explicit light-mode choice. */
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); flex-shrink: 0; }
+.founder-chip { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; font-size: 11px; line-height: 1.6; color: var(--muted); }
+.founder-chip img { width: 38px; height: 38px; object-fit: cover; border-radius: 50%; border: 2px solid #8a72d8; }
+.founder-chip strong { color: var(--ink); }
+.hero-showcase { border-radius: 18px; transition: transform .35s, box-shadow .35s; }
+.hero-showcase:hover { transform: rotate(0); box-shadow: 0 20px 65px -25px #795ee34a; }
+.services-grid { gap: 18px; border: 0; overflow: visible; }
+.service, .service + .service { border: 1px solid var(--line); border-radius: 16px; transition: transform .25s, border-color .25s; }
+.service:hover { transform: translateY(-5px); border-color: #8871da; }
+.service-top > svg { box-sizing: content-box; padding: 13px; background: #e9e7fb; color: #5645a6; border-radius: 14px; }
+.work-image, .inquiry-form { border-radius: 16px; }
+.button, .mobile-contact { border-radius: 100px; }
+.service > p, .service li, .work-description, .process-grid p, .about-grid > div > p:not(.eyebrow), .faq-list details > p { font-size: 14px; }
+.section-heading > p { font-size: 14px; }
+.inquiry-form label, .inquiry-form > p, .inquiry-form .form-disclosure { font-size: 12px; }
+.hero-copy, .hero-showcase { animation: studio-enter .65s ease-out both; }
+.hero-showcase { animation-delay: .12s; }
+@keyframes studio-enter { from { opacity: .2; translate: 0 15px; } to { opacity: 1; translate: 0 0; } }
+html[data-theme="dark"] { color-scheme: dark; --ink: #f1f4fc; --muted: #b1bdd2; --line: #29364d; --cyan: #63ddf0; --lime: #9deafa; --paper: #090e1c; color: var(--ink); background: var(--paper); }
+[data-theme="dark"] body { background: radial-gradient(ellipse 70% 520px at 80% 220px, #211b48 0, transparent 80%), #090e1c; }
+[data-theme="dark"] .site-header { background: #090e1ce8; }
+[data-theme="dark"] .brand-accent, [data-theme="dark"] .footer-brand span { color: #63ddf0; }
+[data-theme="dark"] .button { background: #99eaf7; color: #071c2e; box-shadow: 0 5px 25px #40cce315; }
+[data-theme="dark"] .button:hover { background: #c7b7ff; }
+[data-theme="dark"] h1 > span { color: #87e9f7; }
+@supports (background-clip: text) {
+ [data-theme="dark"] h1 > span { background: linear-gradient(100deg,#77e4f5 20%,#c6afff 95%); background-clip: text; -webkit-text-fill-color: transparent; }
+}
+[data-theme="dark"] .hero-showcase { background: linear-gradient(135deg,#19253c,#221c3c); border-color: #454464; box-shadow: 0 20px 90px -25px #5b41bc45; }
+[data-theme="dark"] .showcase-top, [data-theme="dark"] .showcase-caption small, [data-theme="dark"] .project-number { color: #b4bed5; }
+[data-theme="dark"] .showcase-image { border-color: #45516b; }
+[data-theme="dark"] .showcase-sticker { background: #c6b4ff; color: #20133d; border-radius: 12px; }
+[data-theme="dark"] .specialties { background: #101729; }
+[data-theme="dark"] .service { background: linear-gradient(145deg,#141d30,#0f1728); }
+[data-theme="dark"] .service-top > svg { background: #292344; color: #bcb0ff; }
+[data-theme="dark"] .service-top span, [data-theme="dark"] .work-meta > span { color: #a8b9d2; }
+[data-theme="dark"] .work-section { background: #101727; }
+[data-theme="dark"] .work-image { border-color: #394763; background: #192236; }
+[data-theme="dark"] .work-image > span { background: #101a2eee; color: #fff; border: 1px solid #56627a; }
+[data-theme="dark"] .more-projects, [data-theme="dark"] .extra-projects a { border-color: var(--line); }
+[data-theme="dark"] .about-section { background: linear-gradient(115deg,#171e33,#1e1932); }
+[data-theme="dark"] .portrait-wrap { background: #354059; border-radius: 16px; }
+[data-theme="dark"] .portrait-wrap img { border-radius: 10px; }
+[data-theme="dark"] .about-grid > div > p:not(.eyebrow), [data-theme="dark"] .about-signature span { color: #bac6dd; }
+[data-theme="dark"] .contact-section { background: #101a2c; border-block: 1px solid var(--line); }
+[data-theme="dark"] .contact-copy .eyebrow { color: #83e4f2; }
+[data-theme="dark"] .inquiry-form { background: #182237; border: 1px solid #34425d; }
+[data-theme="dark"] .inquiry-form input, [data-theme="dark"] .inquiry-form textarea, [data-theme="dark"] .inquiry-form select { background: #10192b; border-color: #465572; }
+[data-theme="dark"] .inquiry-form input::placeholder, [data-theme="dark"] .inquiry-form textarea::placeholder { color: #a5b3cc; }
+[data-theme="dark"] .inquiry-form .button { background: #99eaf7; color: #071c2e; }
+[data-theme="dark"] .email-status { background: #21364a; border-color: #508095; }
+[data-theme="dark"] .site-footer { background: #090e1c; }
+[data-theme="dark"] .mobile-contact { background: #99eaf7; color: #071c2e; }
+[data-theme="dark"] .skip-link { background: #20314b; color: #fff; }
+[data-theme="dark"] a:focus-visible, [data-theme="dark"] button:focus-visible, [data-theme="dark"] input:focus-visible, [data-theme="dark"] select:focus-visible, [data-theme="dark"] textarea:focus-visible, [data-theme="dark"] summary:focus-visible { outline-color: #b9a0ff; }
+@media(max-width:1100px) { .desktop-nav { gap: 14px; } .header-actions { gap: 12px; } }
+@media(max-width:760px) {
+ .header-inner { gap: 8px; } .header-actions { gap: 7px; }
+ .brand { gap: 6px; } .brand > span { font-size: 16px; } .brand img { width: 32px; height: 32px; }
+ .brand small { font-size: 7px; letter-spacing: 1px; }
+ .theme-toggle { width: 34px; height: 34px; }
+ .languages { gap: 5px; font-size: 10px; }
+ .menu-toggle { padding: 5px; }
+ .hero { padding-top: 55px; }
+ .founder-chip { font-size: 10px; }
+ .service, .service + .service { border: 1px solid var(--line); }
+}
+@media(prefers-reduced-motion:reduce) { .hero-copy,.hero-showcase { animation: none; } .hero-showcase,.service { transition: none; } }
+.extra-projects .extra-project-image{width:100px;height:66px;object-fit:cover;border-radius:10px;flex-shrink:0}.extra-projects a>span:first-of-type{flex:1}@media(max-width:480px){.extra-projects .extra-project-image{width:68px;height:52px}}

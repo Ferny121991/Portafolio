@@ -1,0 +1,216 @@
+{
+  "revision": 1,
+  "email": "fernelydev@gmail.com",
+  "phone": "+19394051291",
+  "plans": [
+    {
+      "id": "launch",
+      "price": 249,
+      "active": true,
+      "es": {
+        "name": "Empieza con claridad",
+        "tag": "Landing page",
+        "description": "Para presentar un servicio, una promoción o una idea y facilitar el primer contacto.",
+        "features": [
+          "1 página, hasta 5 secciones y 500 palabras",
+          "Un idioma: español o inglés",
+          "Diseño móvil, contacto y enlaces a redes",
+          "SEO técnico básico y publicación",
+          "1 ronda de ajustes",
+          "Entrega estimada: 3–5 días laborables"
+        ]
+      },
+      "en": {
+        "name": "Start with clarity",
+        "tag": "Landing page",
+        "description": "For one service, promotion or idea that needs a clear path to first contact.",
+        "features": [
+          "1 page, up to 5 sections and 500 words",
+          "One language: Spanish or English",
+          "Mobile design, contact and social links",
+          "Basic technical SEO and publishing",
+          "1 revision round",
+          "Estimated delivery: 3–5 business days"
+        ]
+      }
+    },
+    {
+      "id": "business",
+      "price": 499,
+      "active": true,
+      "es": {
+        "name": "Conecta en dos idiomas",
+        "tag": "Web de negocio",
+        "description": "Para negocios de servicios que atienden a clientes en español e inglés.",
+        "features": [
+          "Hasta 5 páginas de contenido",
+          "Español + inglés incluidos",
+          "Hasta 1.500 palabras de texto original",
+          "Adaptación de textos y revisión contigo",
+          "Galería, contacto y SEO en ambos idiomas",
+          "2 rondas de ajustes y publicación",
+          "Entrega estimada: 7–10 días laborables"
+        ]
+      },
+      "en": {
+        "name": "Connect in two languages",
+        "tag": "Business website",
+        "description": "For service businesses working with Spanish- and English-speaking customers.",
+        "features": [
+          "Up to 5 content pages",
+          "Spanish + English included",
+          "Up to 1,500 source-language words",
+          "Copy adaptation reviewed with you",
+          "Gallery, contact and SEO in both languages",
+          "2 revision rounds and publishing",
+          "Estimated delivery: 7–10 business days"
+        ]
+      }
+    },
+    {
+      "id": "catalog",
+      "price": 899,
+      "active": true,
+      "es": {
+        "name": "Gestiona tu catálogo",
+        "tag": "Catálogo + admin",
+        "description": "Para mostrar productos y cambiar su información sin pedir cada edición al desarrollador.",
+        "features": [
+          "Hasta 5 páginas y 20 productos iniciales",
+          "Español + inglés; hasta 1.500 palabras originales en total",
+          "Panel para crear, editar y ocultar productos",
+          "1 administrador y guía de uso",
+          "Solicitudes por email; sin pagos ni inventario",
+          "2 rondas de ajustes, SEO básico y publicación",
+          "Entrega estimada: 10–15 días laborables"
+        ]
+      },
+      "en": {
+        "name": "Manage your catalog",
+        "tag": "Catalog + admin",
+        "description": "For showing products and updating their information without asking a developer for every edit.",
+        "features": [
+          "Up to 5 pages and 20 initial products",
+          "Spanish + English; up to 1,500 source words in total",
+          "Dashboard to add, edit and hide products",
+          "1 administrator and usage guide",
+          "Email inquiries; no checkout or inventory",
+          "2 revision rounds, basic SEO and publishing",
+          "Estimated delivery: 10–15 business days"
+        ]
+      }
+    }
+  ],
+  "extras": [
+    {
+      "id": "admin",
+      "price": 299,
+      "period": "once",
+      "active": true,
+      "includedIn": [
+        "catalog"
+      ],
+      "es": {
+        "name": "Administración básica",
+        "description": "Configuración de un CMS compatible: 1 usuario y un tipo de contenido acordado. Incluido en Catálogo. Migraciones, sistemas a medida y roles avanzados se cotizan."
+      },
+      "en": {
+        "name": "Basic administration",
+        "description": "Setup of a compatible CMS: 1 user and one agreed content type. Included in Catalog. Migrations, custom systems and advanced roles quoted separately."
+      }
+    },
+    {
+      "id": "bilingual",
+      "price": 99,
+      "period": "once",
+      "active": true,
+      "includedIn": [
+        "business",
+        "catalog"
+      ],
+      "es": {
+        "name": "Segundo idioma ES/EN",
+        "description": "Para Landing: adaptación de hasta 500 palabras originales, selector, metadatos y revisión. Incluido en Negocio y Catálogo hasta 1.500 palabras originales; textos especializados aparte."
+      },
+      "en": {
+        "name": "Second language ES/EN",
+        "description": "For Landing: adaptation of up to 500 source words, switcher, metadata and review. Included in Business and Catalog up to 1,500 source words; specialist copy quoted separately."
+      }
+    },
+    {
+      "id": "page",
+      "price": 75,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Página adicional",
+        "description": "1 página de estructura similar, hasta 300 palabras originales con materiales listos. ES/EN si el proyecto es bilingüe. Funciones nuevas se cotizan."
+      },
+      "en": {
+        "name": "Additional page",
+        "description": "1 matching content page, up to 300 source words with ready assets. ES/EN if the project is bilingual. New functionality quoted separately."
+      }
+    },
+    {
+      "id": "logo",
+      "price": 129,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Logo esencial",
+        "description": "1 dirección visual, 2 rondas de ajustes y archivos PNG/SVG. Sin manual de marca ni registro de marca."
+      },
+      "en": {
+        "name": "Essential logo",
+        "description": "1 visual direction, 2 revision rounds and PNG/SVG files. Brand guidelines and trademark registration excluded."
+      }
+    },
+    {
+      "id": "flyer",
+      "price": 35,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Flyer para redes",
+        "description": "1 pieza, 1 formato y 1 ronda de ajustes. Textos y materiales suministrados."
+      },
+      "en": {
+        "name": "Social media flyer",
+        "description": "1 design, 1 format and 1 revision round. Client supplies copy and assets."
+      }
+    },
+    {
+      "id": "reel",
+      "price": 69,
+      "period": "once",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Edición de reel",
+        "description": "Hasta 30 segundos finales, material del cliente, subtítulos y 1 revisión. Sin grabación ni generación compleja."
+      },
+      "en": {
+        "name": "Reel editing",
+        "description": "Up to 30 finished seconds, client footage, captions and 1 revision. Filming and complex generation excluded."
+      }
+    },
+    {
+      "id": "care",
+      "price": 39,
+      "period": "month",
+      "active": true,
+      "includedIn": [],
+      "es": {
+        "name": "Cuidado web opcional",
+        "description": "Hasta 30 minutos de cambios de contenido y revisión mensual. Sin nuevas funciones; sin permanencia."
+      },
+      "en": {
+        "name": "Optional website care",
+        "description": "Up to 30 minutes of content updates and a monthly review. New features excluded; no long-term commitment."
+      }
+    }
+  ]
+}
