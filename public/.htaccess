@@ -1,0 +1,6 @@
+# Revalidate HTML so returning visitors receive the latest application bundle.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html?$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
