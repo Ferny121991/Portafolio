@@ -52,18 +52,30 @@ export default function App({ language = "es" }: { language?: Language }) {
     try { localStorage.setItem("fernely-theme", next); } catch { /* Theme still works. */ }
   }
   const [service, setService] = useState("");
-  const [emailReady, setEmailReady] = useState(false);
-  const [emailHref, setEmailHref] = useState("mailto:fernelydev@gmail.com");
+  const [inquiryState, setInquiryState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const icons = [Code2, Palette, Play];
 
-  function prepareEmail(event: FormEvent<HTMLFormElement>) {
+  async function sendInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const body = `${t.form.name}: ${data.get("name")}\n${t.form.service}: ${service}\n\n${data.get("message")}`;
-    const href = `mailto:fernelydev@gmail.com?subject=${encodeURIComponent(`${t.form.subject} — ${service}`)}&body=${encodeURIComponent(body)}`;
-    setEmailHref(href);
-    setEmailReady(true);
-    window.location.href = href;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setInquiryState('sending');
+    try {
+      const response = await fetch('https://precios.fernelydev.com/api/enviar.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: data.get('name'), email: data.get('email'), phone: data.get('phone'),
+          service: data.get('service'), message: data.get('message'),
+          website: data.get('website'), consent: data.get('consent') === 'on',
+          language, campaign: new URLSearchParams(window.location.search).get('utm_campaign') || '',
+        }),
+      });
+      if (!response.ok) throw new Error('Inquiry could not be sent');
+      setInquiryState('success'); form.reset(); setService('');
+    } catch {
+      setInquiryState('error');
+    }
   }
 
   return (
@@ -445,7 +457,7 @@ export default function App({ language = "es" }: { language?: Language }) {
                 <span className="sr-only">{t.newTab}</span>
               </a>
             </div>
-            <form className="inquiry-form" onSubmit={prepareEmail}>
+            <form className="inquiry-form" onSubmit={sendInquiry}>
               <h3>{t.form.title}</h3>
               <p>{t.form.intro}</p>
               <label htmlFor="client-name">{t.form.name}</label>
@@ -457,6 +469,10 @@ export default function App({ language = "es" }: { language?: Language }) {
                 maxLength={100}
                 placeholder={t.form.namePlaceholder}
               />
+              <label htmlFor="client-email">{t.form.email}</label>
+              <input id="client-email" type="email" name="email" autoComplete="email" required maxLength={150} placeholder={t.form.emailPlaceholder} />
+              <label htmlFor="client-phone">{t.form.phone}</label>
+              <input id="client-phone" type="tel" name="phone" autoComplete="tel" maxLength={30} placeholder={t.form.phonePlaceholder} />
               <label htmlFor="service">{t.form.service}</label>
               <select
                 id="service"
@@ -484,18 +500,15 @@ export default function App({ language = "es" }: { language?: Language }) {
                 rows={3}
                 placeholder={t.form.messagePlaceholder}
               />
-              <button type="submit" className="button">
-                {t.form.submit}
+              <label className="inquiry-trap" aria-hidden="true">{t.form.website}<input name="website" tabIndex={-1} autoComplete="off" /></label>
+              <label className="consent-check"><input type="checkbox" name="consent" required /> <span>{t.form.consent} <a href={language === 'en' ? '/en/privacy.html' : '/privacy.html'} target="_blank" rel="noopener noreferrer">{t.form.privacy}</a></span></label>
+              <button type="submit" className="button" disabled={inquiryState === 'sending'}>
+                {inquiryState === 'sending' ? t.form.sending : t.form.submit}
                 <Mail size={18} />
               </button>
               <p className="form-disclosure">{t.form.disclosure}</p>
-              {emailReady && (
-                <div className="email-status" role="status">
-                  {t.form.ready}
-                  <a href={emailHref}>{t.form.retry}</a>
-                  <span>{t.form.fallback}</span>
-                </div>
-              )}
+              {inquiryState === 'success' && <div className="email-status" role="status">{t.form.success}</div>}
+              {inquiryState === 'error' && <div className="email-status" role="alert">{t.form.error} <a href="mailto:fernelydev@gmail.com">fernelydev@gmail.com</a></div>}
             </form>
           </div>
         </section>

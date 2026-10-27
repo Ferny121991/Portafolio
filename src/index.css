@@ -895,6 +895,11 @@ details[open] > summary > span {
   display: block;
   margin-top: 8px;
 }
+.inquiry-trap { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+.consent-check { display:flex!important; align-items:flex-start; gap:10px; font-size:13px; line-height:1.6; }
+.consent-check input { width:18px; min-width:18px; height:18px; margin:2px 0 0; }
+.consent-check a { text-decoration:underline; text-underline-offset:3px; }
+.inquiry-form .button:disabled { opacity:.65; cursor:wait; }
 .site-footer {
   background: #fafbf9;
 }

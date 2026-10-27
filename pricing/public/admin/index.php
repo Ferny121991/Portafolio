@@ -47,6 +47,7 @@ $data=catalog(); $csrf=$_SESSION['csrf']; $saved=$_SESSION['saved'] ?? false; un
 </a>
 <a href="/">Ver precios publicados ↗</a>
 <a href="/admin/projects.php">Gestionar proyectos →</a>
+<a href="/admin/leads.php">Consultas de clientes →</a>
 <?php if(!empty($_SESSION['authenticated'])):?>
 <form method="post">
 <input type="hidden" name="csrf" value="<?=esc($csrf)?>">
